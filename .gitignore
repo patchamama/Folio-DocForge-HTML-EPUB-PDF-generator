@@ -1,0 +1,77 @@
+# Dependencies
+node_modules/
+
+# Build artifacts — intermediate
+converted/
+pdf_pandoc_tmp*.html
+epub_pandoc_tmp.html
+full_book.md
+00_combined_full.md
+links.md
+img/generated/
+
+# Build artifacts — HTML output (keep CSS/templates, ignore generated)
+html/[0-9][0-9]_*.html
+html/index.html
+html/ejs.js
+html/full_book.html
+html/full_book.md
+html/images/
+html/videos/
+
+# Build artifacts — EPUB
+epub/[0-9][0-9]_*.xhtml
+epub/toc.xhtml
+epub/toc.xhtml.src
+epub/content.opf
+epub/content.opf.src
+epub/images/
+epub/img/
+
+# Build artifacts — LaTeX / PDF
+pdf/[0-9][0-9]_*.tex
+pdf/book.tex
+pdf/book_mobile.tex
+pdf/build.log
+
+# Final outputs
+book.epub
+book.pdf
+book.pandoc.pdf
+book.pandoc.epub
+book.html
+book_mobile.pdf
+
+# Root asset copies (staged by pipeline)
+images/
+
+# Server runtime files
+.server.log
+.notes.txt
+.last-job.json
+
+# Staged markdown (created by pipeline at runtime)
+_00_*.md
+00_*.md
+_srv_bk_*.md
+
+# Course content folders (not part of the tool)
+ELO_*/
+
+# Agent tooling
+.atl/
+
+# Playwright browser profile (generated at runtime by _mdfromhtml)
+_mdfromhtml/.pw-profile/
+
+# Credentials / secrets
+_mdfromhtml/elo-auth.json
+
+# LaTeX auxiliary files (build artifacts)
+pdf/book.aux
+pdf/book.idx
+pdf/book.ilg
+pdf/book.ind
+pdf/book.log
+pdf/book.out
+pdf/book.toc

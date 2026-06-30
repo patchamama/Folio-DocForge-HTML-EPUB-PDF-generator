@@ -1,0 +1,635 @@
+{
+  "comment": "User-configurable regex patterns applied to the final markdown output. Each entry has 'pattern' (JS regex string), optional 'flags' (default 'g'), and 'replacement' (default ''). The 'description' field is for documentation only.",
+  "patterns": [
+    {
+      "description": "Strip leading spaces/tabs after a newline (normalize indented lines to column 0, without collapsing blank lines)",
+      "pattern": "\\n[ \\t]+",
+      "flags": "g",
+      "replacement": "\\n"
+    },
+    {
+      "description": "Normalize Windows line endings (CRLF → LF) before any other processing",
+      "pattern": "\\r\\n",
+      "flags": "g",
+      "replacement": "\n"
+    },
+    {
+      "description": "Remove leading '---' YAML front-matter marker if it appears as the very first line",
+      "pattern": "^---\\n",
+      "flags": "g",
+      "replacement": ""
+    },
+    {
+      "description": "Replace video player UI block (from 'Video-Player wird geladen.' to 'This is a modal window.') with ##### ▶ [Video]",
+      "pattern": "Video-Player wird geladen\\.[\\s\\S]*?This is a modal window\\.",
+      "flags": "g",
+      "replacement": "##### ▶ [Video]"
+    },
+    {
+      "description": "Remove slide content blocks ending at a Transkript heading — replace with ▶ Slide, keep the Transkript line",
+      "pattern": "^##### slide:[^\\n]*(?:\\n(?!#####?\\s+Transkript\\b)[^\\n]*)*\\n(?=#####?\\s+Transkript\\b)",
+      "flags": "gm",
+      "replacement": "\n"
+    },
+    {
+      "description": "Remove slide content blocks ending at data-savepage-src= line — replace entire block with ▶ Slide",
+      "pattern": "^##### slide:[^\\n]*(?:\\n[^\\n]*)*?\\n[^\\n]*data-savepage-src=[^\\n]*",
+      "flags": "gm",
+      "replacement": "\n"
+    },
+    {
+      "description": "Delete lines containing data-savepage-sameorigin=",
+      "pattern": "^[^\\n]*data-savepage-sameorigin=[^\\n]*$",
+      "flags": "gm",
+      "replacement": "\n\n"
+    },
+    {
+      "description": "Convert flashcard pairs (##### label / blank / ##### Zum Umdrehen klicken / blank / ##### value) to 'label: value'",
+      "pattern": "^##### (.+)\\n\\n##### Zum Umdrehen klicken\\n\\n##### (.+)$",
+      "flags": "gm",
+      "replacement": "$1: $2"
+    },
+    {
+      "description": "Delete all lines containing 'Zum Umdrehen klicken' (including indented variants)",
+      "pattern": "^[^\\n]*Zum Umdrehen klicken[^\\n]*$",
+      "flags": "gm",
+      "replacement": ""
+    },
+    {
+      "description": "Convert ##### [**text**] headings (bold text in brackets, no URL) to italic ***text***",
+      "pattern": "^#{5}\\s+\\[\\*+([^\\*\\[\\]\\n]+)\\*+\\]\\s*$",
+      "flags": "gm",
+      "replacement": "***$1***"
+    },
+    {
+      "description": "Delete orphan lines that are just a heading marker followed by ] (artifact from link-run-on splitting)",
+      "pattern": "^#{1,6}\\s*\\]\\s*$",
+      "flags": "gm",
+      "replacement": ""
+    },
+    {
+      "description": "Remove ##### heading prefix — convert h5 headings to plain text (keeping content, including any inline markup)",
+      "pattern": "^#{5}\\s+(.*)$",
+      "flags": "gm",
+      "replacement": "$1"
+    },
+    {
+      "description": "Normalize 4+ consecutive blank lines to 3 (cleanup after heading removals and other transformations)",
+      "pattern": "\\n{4,}",
+      "flags": "g",
+      "replacement": "\\n\\n\\n"
+    },
+    {
+      "description": "Convert #### headings to bold-italic: ***Content***",
+      "pattern": "^####\\s+(.+)$",
+      "flags": "gm",
+      "replacement": "***$1***"
+    },
+    {
+      "description": "Convert indented ## headings (4+ spaces/tabs) to bold-italic ***Content***, stripping any trailing Pandoc {attrs}",
+      "pattern": "^[ \\t]+##\\s+(.+?)(?:\\s*\\{[^}\\n]{0,500}\\})?\\s*$",
+      "flags": "gm",
+      "replacement": "***$1***"
+    },
+    {
+      "description": "Remove trailing Pandoc attributes from headings: ## Heading {#id .class} → ## Heading",
+      "pattern": "^(#{1,6}\\s+.+?)\\s*\\{[^}\\n]{0,500}\\}\\s*$",
+      "flags": "gm",
+      "replacement": "$1"
+    },
+    {
+      "description": "Fix %22-wrapped URLs in markdown links, also stripping optional trailing {attrs}: ](%22url%22){attrs} → ](url)",
+      "pattern": "\\]\\(%22(https?://.*?)%22\\)[ \\t]*(?:\\{[^}\\n]{0,500}\\})?",
+      "flags": "g",
+      "replacement": "]($1)"
+    },
+    {
+      "description": "Fix heading run-on: ')###' → ')\\n\\n###' — add blank line before a heading immediately following a closing parenthesis",
+      "pattern": "\\)(?=#{1,6}\\s)",
+      "flags": "g",
+      "replacement": ")\n\n"
+    },
+    {
+      "description": "Fix missing opening [ bracket: any line where text appears before ]( without a preceding [ — add [ at line start",
+      "pattern": "^([^[\\n\\]]+)\\]\\(",
+      "flags": "gm",
+      "replacement": "[$1]("
+    },
+    {
+      "description": "Replace escaped-quote image alt ![\\\"\\\"] with empty alt ![] — artifact from HTML-to-MD conversion",
+      "pattern": "!\\[\\\\\"\\\\\"\\]",
+      "flags": "g",
+      "replacement": "![]"
+    },
+    {
+      "description": "Remove image lines with &quot;&quot; as source: ![](&quot;&quot;)",
+      "pattern": "^!\\[\\]\\(&quot;&quot;\\)\\s*$",
+      "flags": "gm",
+      "replacement": ""
+    },
+    {
+      "description": "Remove trailing backslash after a period at end of line (.\\) — redundant hard-break after sentence terminator",
+      "pattern": "\\.\\\\$",
+      "flags": "gm",
+      "replacement": "."
+    },
+    {
+      "description": "Replace 2+ spaces in the middle of text with a single space — only after a non-whitespace char to preserve leading indentation",
+      "pattern": "([^ \\t\\n])  +",
+      "flags": "g",
+      "replacement": "$1 "
+    },
+    {
+      "description": "Fix bold/italic markers wrapping list dash: **- text** → - **text**",
+      "disabled": true,
+      "pattern": "^(\\s*)(\\*+)- (.+?)(\\*+)$",
+      "flags": "gm",
+      "replacement": "$1- $2$3$4"
+    },
+    {
+      "description": "Fix bold markers: '**word **next' → '**word** next' (space leaked before closing **)",
+      "disabled": true,
+      "pattern": "(\\*+)([A-Za-zÄÖÜäöüß]+) (\\*+)([A-Za-zÄÖÜäöüß])",
+      "flags": "g",
+      "replacement": "$1$2$3 $4"
+    },
+    {
+      "description": "Remove trailing space before closing asterisks at end of line: ' **\\n' → '**\\n'",
+      "disabled": true,
+      "pattern": " (\\*+)\\n",
+      "flags": "g",
+      "replacement": "$1\n"
+    },
+    {
+      "description": "Fix split bold/italic initial letter: ' **L**ightweight' → ' **L** ightweight' — adds space between closing markers and the rest of the word",
+      "disabled": true,
+      "pattern": " (\\*+)([A-Z])(\\*+)([A-Za-z]+)",
+      "flags": "g",
+      "replacement": " $1$2$3 $4"
+    },
+    {
+      "description": "Replace bold-italic period artifact '***.**** → '.' (rendering artifact from HTML conversion)",
+      "disabled": true,
+      "pattern": "\\*\\*\\*\\.\\*\\*\\*",
+      "flags": "g",
+      "replacement": "."
+    },
+    {
+      "description": "Convert URL-template lines containing &lt; to self-links [url](url) — handles italic-wrapped *https://&lt;...&gt;/path* patterns",
+      "pattern": "^\\*?(https?://[^*\\n]*&lt;[^*\\n]*)\\*?\\s*$",
+      "flags": "gm",
+      "replacement": "[$1]($1)"
+    },
+    {
+      "description": "Remove lines containing only digits, possibly with whitespace (year labels, slide counters, etc.)",
+      "pattern": "^\\d+\\s*$",
+      "flags": "gm",
+      "replacement": ""
+    },
+    {
+      "description": "Remove lines containing only a number followed by a period (e.g. '1.', '2.') — broken ordered list markers",
+      "pattern": "^\\d+\\.\\s*$",
+      "flags": "gm",
+      "replacement": ""
+    },
+    {
+      "description": "Remove lines containing only a dash with optional whitespace (empty or broken list items)",
+      "pattern": "^\\-\\s*$",
+      "flags": "gm",
+      "replacement": ""
+    },
+    {
+      "description": "Remove lines with a dash followed by only digits (e.g. '-   1', '-   2')",
+      "pattern": "^\\-\\s+\\d+\\s*$",
+      "flags": "gm",
+      "replacement": ""
+    },
+    {
+      "description": "Remove remaining Pandoc inline span attributes [text]{.class key=val} — keep only the text",
+      "pattern": "\\[([^\\]\\n]+)\\]\\{[^}\\n]{1,300}\\}",
+      "flags": "g",
+      "replacement": "$1"
+    },
+    {
+      "description": "Remove standalone Pandoc attribute blocks on their own line: {.class key=val}",
+      "pattern": "^\\{[^}\\n]{1,300}\\}\\s*$",
+      "flags": "gm",
+      "replacement": ""
+    },
+    {
+      "description": "Remove any line that contains ::: (Pandoc fenced-div markers, with or without attributes, even when preceded by a list marker like '1.  :::  {...}')",
+      "pattern": "^[^\\n`]*:::.*$",
+      "flags": "gm",
+      "replacement": ""
+    },
+    {
+      "description": "Catch-all: remove any remaining inline {attrs} blocks not containing backticks (handles link trailing attrs not caught above)",
+      "pattern": "\\{[^}\\n`]{1,1000}\\}",
+      "flags": "g",
+      "replacement": ""
+    },
+    {
+      "description": "Remove chapter progress lines like 'Kapitel 1 von 20'",
+      "pattern": "^Kapitel \\d+ von \\d+\\s*$",
+      "flags": "gm",
+      "replacement": ""
+    },
+    {
+      "description": "Remove progress indicator lines like '3 von 5'",
+      "pattern": "^\\d+ von \\d+\\s*$",
+      "flags": "gm",
+      "replacement": ""
+    },
+    {
+      "description": "Remove h1 headings with laptop emoji (# 💻 ...)",
+      "pattern": "^# 💻.*$",
+      "flags": "gm",
+      "replacement": ""
+    },
+    {
+      "description": "Remove 'Jetzt sind Sie dran!' h1 headings",
+      "pattern": "^# Jetzt sind Sie dran!.*$",
+      "flags": "gm",
+      "replacement": ""
+    },
+    {
+      "description": "Remove standalone 'STARTEN' lines",
+      "pattern": "^STARTEN\\s*$",
+      "flags": "gm",
+      "replacement": ""
+    },
+    {
+      "description": "Remove '## [ERNEUT STARTEN]' heading lines",
+      "pattern": "^## \\[ERNEUT STARTEN\\].*$",
+      "flags": "gm",
+      "replacement": ""
+    },
+        {
+      "description": "Remove '###' heading lines",
+      "pattern": "^###$",
+      "flags": "gm",
+      "replacement": ""
+    },
+        {
+      "description": "Remove 'ERNEUT STARTEN' heading lines",
+      "pattern": "^ERNEUT STARTEN$",
+      "flags": "gm",
+      "replacement": ""
+    },
+    {
+      "description": "Convert lines starting with 'Schritt' to ### headings",
+      "pattern": "^(Schritt\\b.*)",
+      "flags": "gm",
+      "replacement": "### $1"
+    },
+        {
+      "description": "Convert lines starting with 'Transkript' to ### headings",
+      "pattern": "^(Transkript\\b.*)",
+      "flags": "gm",
+      "replacement": "### $1"
+    },
+    {
+      "description": "Collapse blank line between two consecutive headings of the same level",
+      "pattern": "^(#{1,6}) ([^\\n]+)\\n\\n(?=\\1 )",
+      "flags": "gm",
+      "replacement": "$1 $2\\n"
+    },
+    {
+      "description": "Remove backslash-before-period artifact: \\. → .",
+      "pattern": "\\\\\\.",
+      "flags": "g",
+      "replacement": "."
+    },
+    {
+      "description": "Convert > [!NOTE] admonition blocks to ### headings",
+      "pattern": "\\n> \\[!NOTE\\]\\n> (.*)\\n",
+      "flags": "g",
+      "replacement": "\\n### $1\\n"
+    },
+    {
+      "description": "Convert ## headings to ### headings",
+      "pattern": "^## ",
+      "flags": "gm",
+      "replacement": "### "
+    },
+    {
+      "description": "Remove lines containing only '['",
+      "pattern": "^\\[\\s*$",
+      "flags": "gm",
+      "replacement": ""
+    },
+    {
+      "description": "Remove lines containing only ']'",
+      "pattern": "^\\]\\s*$",
+      "flags": "gm",
+      "replacement": ""
+    },
+    {
+      "description": "Remove lines containing only '&nbsp;'",
+      "pattern": "^&nbsp;\\s*$",
+      "flags": "gm",
+      "replacement": ""
+    },
+    {
+      "description": "Remove standalone 'SENDEN' lines",
+      "pattern": "^SENDEN\\s*$",
+      "flags": "gm",
+      "replacement": ""
+    },
+    {
+      "description": "Remove standalone 'Richtig' lines",
+      "pattern": "^Richtig\\s*$",
+      "flags": "gm",
+      "replacement": ""
+    },
+    {
+      "description": "Remove escaped-quote pair in image alt: [&quot;&quot;] → []",
+      "pattern": "\\[&quot;&quot;\\]",
+      "flags": "g",
+      "replacement": "[]"
+    },
+    {
+      "description": "Remove trailing backslash after asterisk or space at end of line (markdown hard-break artifact)",
+      "pattern": "([* ])\\\\$",
+      "flags": "gm",
+      "replacement": "$1"
+    },
+    {
+      "description": "Remove lines containing only a backslash",
+      "pattern": "^\\\\$",
+      "flags": "gm",
+      "replacement": ""
+    },
+    {
+      "description": "Convert '▶ Slide' line to ##### heading",
+      "pattern": "^▶ Slide$",
+      "flags": "gm",
+      "replacement": "##### ▶ Slide"
+    },
+    {
+      "description": "Convert bold-only lines to ##### heading: **text** → ##### **text**",
+      "pattern": "\\n\\*\\*(.*)\\*\\*\\n",
+      "flags": "g",
+      "replacement": "\\n##### **$1**\\n"
+    },
+    {
+      "description": "Join a no-dot UPPERCASE-starting label (plain, **bold**, ***bold-italic***, or ##### variants) followed by 1+ blank lines and a lowercase-starting line with ': ' — strips ##### prefix and ** / *** markers",
+      "pattern": "^(?:#{5}\\s*)?(\\*{0,3})([A-ZÄÖÜ][^*.\\n]*)(\\*{0,3})\\n{2,}([a-zäöüß][^\\n]+)",
+      "flags": "gm",
+      "replacement": "- $2: $4"
+    },
+    {
+      "description": "Ensure blank line before # headings when preceded by content without blank separation",
+      "pattern": "([^\\n])\\n(#{1,6} )",
+      "flags": "g",
+      "replacement": "$1\\n\\n$2"
+    },
+    {
+      "description": "Ensure blank line after # headings when followed by content without blank separation",
+      "pattern": "^(#{1,6} [^\\n]+)\\n([^\\n])",
+      "flags": "gm",
+      "replacement": "$1\\n\\n$2"
+    },
+    {
+      "description": "Ensure blank line before lines fully wrapped in bold/italic asterisks (**text** or ***text***)",
+      "pattern": "([^\\n])\\n(\\*{1,3}[^ \\n*][^\\n]*\\*{1,3})$",
+      "flags": "gm",
+      "replacement": "$1\\n\\n$2"
+    },
+    {
+      "description": "Ensure blank line after lines fully wrapped in bold/italic asterisks",
+      "pattern": "^(\\*{1,3}[^ \\n*][^\\n]*\\*{1,3})\\n([^\\n])",
+      "flags": "gm",
+      "replacement": "$1\\n\\n$2"
+    },
+    {
+      "description": "Ensure blank line before image lines (![alt](src))",
+      "pattern": "([^\\n])\\n(!\\[)",
+      "flags": "g",
+      "replacement": "$1\\n\\n$2"
+    },
+    {
+      "description": "Ensure blank line after image lines (![alt](src))",
+      "pattern": "(!\\[[^\\]]*\\]\\([^)]+\\))\\n([^\\n])",
+      "flags": "g",
+      "replacement": "$1\\n\\n$2"
+    },
+    {
+      "description": "Collapse blank lines between consecutive list items (- item\\n\\n- item → - item\\n- item)",
+      "pattern": "([ \\t]*-[^\\n]+)\\n{2,}(?=[ \\t]*-)",
+      "flags": "g",
+      "replacement": "$1\\n"
+    },
+    {
+      "description": "Strip leading spaces/tabs after a newline (normalize indented lines to column 0, without collapsing blank lines)",
+      "pattern": "\\n[ \\t]+",
+      "flags": "g",
+      "replacement": "\\n"
+    },
+    {
+      "description": "Replace \\ | (backslash-space-pipe) with space-pipe in table cells — pandoc escape artifact",
+      "pattern": "\\\\ \\|",
+      "flags": "g",
+      "replacement": " |"
+    },
+    {
+      "description": "Fix &quot;-wrapped URLs in markdown links: ](&quot;url&quot;) → ](url)",
+      "pattern": "\\]\\(&quot;([^\\n)]+)&quot;\\)",
+      "flags": "g",
+      "replacement": "]($1)"
+    },
+    {
+      "description": "Fix %22-wrapped paths in links not caught by the earlier https-only pattern: ](%22path%22) → ](path)",
+      "pattern": "\\]\\(%22([^\\n)]+?)%22\\)",
+      "flags": "g",
+      "replacement": "]($1)"
+    },
+    {
+      "description": "Fix standalone (&quot;url&quot;) references not inside a markdown link: (&quot;url&quot;) → (url)",
+      "pattern": "\\(&quot;([^\\n)]+)&quot;\\)",
+      "flags": "g",
+      "replacement": "($1)"
+    },
+    {
+      "description": "Remove ### heading prefix from image-only headings: ### ![alt](src) → ![alt](src)",
+      "pattern": "^### (!\\[)",
+      "flags": "gm",
+      "replacement": "$1"
+    },
+    {
+      "description": "Convert opening underscore italic to asterisk: ' _word' → ' *word'",
+      "disabled": true,
+      "pattern": "( )_([^\\s_])",
+      "flags": "g",
+      "replacement": "$1*$2"
+    },
+    {
+      "description": "Convert closing underscore italic to asterisk: 'word_ ' → 'word* '",
+      "disabled": true,
+      "pattern": "([^\\s_])_( )",
+      "flags": "g",
+      "replacement": "$1*$2"
+    },
+    {
+      "description": "Fix emphasis spacing pass 1: closing marker has space before it, no space after — 'word **rest' → 'word** rest'. Requires opening marker to follow a space/paren/line-start to avoid false positives on correctly-placed markers.",
+      "disabled": true,
+      "pattern": "(^|[ \\t(])(\\*{1,3})([^\\n*]+) \\2([^\\s*\\n])",
+      "flags": "gm",
+      "replacement": "$1$2$3$2 $4"
+    },
+    {
+      "description": "Fix emphasis spacing pass 2: second pass for cascading or multiple spans on the same line",
+      "disabled": true,
+      "pattern": "(^|[ \\t(])(\\*{1,3})([^\\n*]+) \\2([^\\s*\\n])",
+      "flags": "gm",
+      "replacement": "$1$2$3$2 $4"
+    },
+    {
+      "description": "Remove table rows where all cells are empty or contain only \\, \\-, or - (pandoc table artifacts with backslash cells)",
+      "pattern": "^[ \\t]*\\|(?:[ \\t]*(?:\\\\-?|-)?[ \\t]*\\|)+[ \\t]*$",
+      "flags": "gm",
+      "replacement": ""
+    },
+    {
+      "description": "Convert h3 headings longer than 130 characters to NOTE admonitions (overly long headings are likely paragraph text). Excludes video headings (### [▶ Video:...).",
+      "pattern": "^### (?!\\[▶ Video:)(.{130,})$",
+      "flags": "gm",
+      "replacement": "> [!NOTE]\\n> $1"
+    },
+    {
+      "description": "Remove lines containing only emoji/symbol characters — BMP emoji (U+2100-U+27BF, U+2B00-U+2BFF) or supplementary emoji via surrogate pairs",
+      "pattern": "^\\s*(?:[\\u2100-\\u27BF\\u2B00-\\u2BFF]|[\\uD800-\\uDFFF])+[\\uFE0F\\u200D\\u20E3]*\\s*$",
+      "flags": "gm",
+      "replacement": ""
+    },
+
+    {
+      "description": "Remove standalone 'Unstarted' lines",
+      "pattern": "^Unstarted\\s*$",
+      "flags": "gm",
+      "replacement": ""
+    },
+    {
+      "description": "Remove standalone 'Completed' lines",
+      "pattern": "^Completed\\s*$",
+      "flags": "gm",
+      "replacement": ""
+    },
+    {
+      "description": "Remove standalone ']]' lines (broken link artifact)",
+      "pattern": "^\\]\\]\\s*$",
+      "flags": "gm",
+      "replacement": ""
+    },
+    {
+      "description": "Remove '[Remember me on this device]]' lines",
+      "pattern": "^\\[Remember me on this device\\]\\].*$",
+      "flags": "gm",
+      "replacement": ""
+    },
+        {
+      "description": "Remove '[Remember me on this device]]' lines",
+      "pattern": "^\\[\\[(.*)\\]\\].*$",
+      "flags": "gm",
+      "replacement":"[$1]"
+    },
+            {
+      "description": "Remove '][By clicking, you are agreeing to our applicable' lines",
+      "pattern": "^\\]\\[By clicking, you are agreeing to our applicable.*$",
+      "flags": "gm",
+      "replacement":""
+    },
+                {
+      "description": "][Remember me on this device]]",
+      "pattern": "^\\]\\[Remember me on this device\\]\\].*$",
+      "flags": "gm",
+      "replacement":""
+    },
+            {
+      "description": "Remove '[[TEXTO]]' lines",
+      "pattern": "^\\[\\[(.*)\\]\\].*$",
+      "flags": "gm",
+      "replacement":"[$1]"
+    },
+               {
+      "description": "Remove '][TEXTO]]' lines",
+      "pattern": "^\\]\\[(.*)\\]\\].*$",
+      "flags": "gm",
+      "replacement":"[$1]"
+    },
+    {
+      "description": "Fix broken link start '][Texto' → '[[Texto' (artifact from split wiki-link)",
+      "pattern": "^\\]\\[(.*)$",
+      "flags": "gm",
+      "replacement": "[[$1"
+    },
+
+    {
+      "description": "Unescape backslash-quote \\\" to \" in table cell content (before backtick wrapping)",
+      "pattern": "(\\|[^|\\n]*)\\\\\"",
+      "flags": "g",
+      "replacement": "$1\""
+    },
+    {
+      "description": "Wrap table cell values containing :// in backticks (only on lines starting with |, i.e. real table rows)",
+      "pattern": "^(\\|[^\\n]*?\\|)\\s*([^`|\\n\\[\\]]*://[^`|\\n\\[\\]]*?)\\s*(?=\\|)",
+      "flags": "gm",
+      "replacement": "$1 `$2` "
+    },
+    {
+      "description": "Wrap table cell values containing = in backticks (only on lines starting with |, i.e. real table rows)",
+      "pattern": "^(\\|[^\\n]*?\\|)\\s*([^`|\\n\\[\\]]*\\w=[^`|\\n\\[\\]]*?)\\s*(?=\\|)",
+      "flags": "gm",
+      "replacement": "$1 `$2` "
+    },
+
+    {
+      "description": "Add xml language to unlabeled code blocks containing <?xml",
+      "pattern": "```\\n([\\s\\S]*?<\\?xml[\\s\\S]*?)\\n```",
+      "flags": "g",
+      "replacement": "```xml\\n$1\\n```"
+    },
+    {
+      "description": "Add html language to unlabeled code blocks with <!DOCTYPE or <html",
+      "pattern": "```\\n([\\s\\S]*?(?:<!DOCTYPE html|<html\\b)[\\s\\S]*?)\\n```",
+      "flags": "g",
+      "replacement": "```html\\n$1\\n```"
+    },
+    {
+      "description": "Add sql language to unlabeled code blocks with SQL DML/DDL keywords",
+      "pattern": "```\\n([\\s\\S]*?(?:SELECT |INSERT INTO |UPDATE |DELETE FROM |CREATE TABLE |ALTER TABLE |DROP TABLE )[\\s\\S]*?)\\n```",
+      "flags": "g",
+      "replacement": "```sql\\n$1\\n```"
+    },
+    {
+      "description": "Add java language to unlabeled code blocks with Java class/import syntax",
+      "pattern": "```\\n([\\s\\S]*?(?:public class |import java\\.|@Override|void main\\()[\\s\\S]*?)\\n```",
+      "flags": "g",
+      "replacement": "```java\\n$1\\n```"
+    },
+    {
+      "description": "Add javascript language to unlabeled code blocks with JS syntax",
+      "pattern": "```\\n([\\s\\S]*?(?:function |const |let |var |require\\(|module\\.exports)[\\s\\S]*?)\\n```",
+      "flags": "g",
+      "replacement": "```javascript\\n$1\\n```"
+    },
+    {
+      "description": "Add python language to unlabeled code blocks with Python syntax",
+      "pattern": "```\\n([\\s\\S]*?(?:def |import |from .* import|elif |print\\()[\\s\\S]*?)\\n```",
+      "flags": "g",
+      "replacement": "```python\\n$1\\n```"
+    },
+    {
+      "description": "Add css language to unlabeled code blocks with CSS property syntax",
+      "pattern": "```\\n([\\s\\S]*?(?:color:|font-family:|font-size:|background:|margin:|padding:|border:|display:|width:|height:)\\s[\\s\\S]*?)\\n```",
+      "flags": "g",
+      "replacement": "```css\\n$1\\n```"
+    },
+    {
+      "description": "Add json language to unlabeled code blocks that look like JSON (object/array with quoted keys)",
+      "pattern": "```\\n(\\s*[{\\[][\\s\\S]*?\"[^\"\\n]+\"\\s*:[\\s\\S]*?)\\n```",
+      "flags": "g",
+      "replacement": "```json\\n$1\\n```"
+    }
+  ]
+}

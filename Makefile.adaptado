@@ -1,0 +1,97 @@
+# ============================================================
+# Makefile adaptado para tu propio libro
+# ============================================================
+# Uso:
+#   make html          → Genera HTML en html/
+#   make book.epub     → Genera book.epub
+#   make book.pdf      → Genera book.pdf (requiere texlive)
+#   make all           → Todo lo anterior
+#
+# Requisitos:
+#   - Node.js (npm install antes de compilar)
+#   - texlive            (solo para PDF)
+#   - Inkscape           (solo si tienes imágenes SVG)
+# ============================================================
+
+# Descubre automáticamente los archivos NN_nombre.md
+CHAPTERS := $(basename $(shell ls [0-9][0-9]_*.md) .md)
+
+# Descubre automáticamente las imágenes SVG (para conversión a PDF en LaTeX)
+SVGS := $(wildcard img/*.svg)
+
+# ── Objetivo principal ─────────────────────────────────────
+all: html book.epub book.pdf
+
+# ============================================================
+# HTML
+# ============================================================
+# Genera un .html por cada .md en el directorio html/
+html: $(foreach CHAP,$(CHAPTERS),html/$(CHAP).html)
+
+# Regla de compilación por capítulo:
+#   node src/render_html.mjs entrada.md > salida.html
+html/%.html: %.md src/render_html.mjs src/chapter.html
+	node src/render_html.mjs $< > $@
+
+# ============================================================
+# PDF
+# ============================================================
+# Genera los archivos .tex intermedios y las imágenes PDF
+tex: $(foreach CHAP,$(CHAPTERS),pdf/$(CHAP).tex) $(patsubst img/%.svg,img/generated/%.pdf,$(SVGS))
+
+# Regla: cada .md se convierte en .tex
+pdf/%.tex: %.md src/render_latex.mjs
+	node src/render_latex.mjs $< > $@
+
+# Compila el PDF final usando xelatex (vía build.sh)
+book.pdf: tex pdf/book.tex
+	cd pdf && sh build.sh book > /dev/null
+	mv pdf/book.pdf .
+
+# Versión mobile del PDF (papel A5, márgenes reducidos)
+pdf/book_mobile.tex: pdf/book.tex
+	cat pdf/book.tex | sed -e 's/natbib}/natbib}\n\\usepackage[a5paper, left=5mm, right=5mm]{geometry}/' | sed -e 's/setmonofont.Scale=0.8./setmonofont[Scale=0.75]/' > pdf/book_mobile.tex
+
+book_mobile.pdf: pdf/book_mobile.tex tex
+	cd pdf && sh build.sh book_mobile > /dev/null
+	mv pdf/book_mobile.pdf .
+
+# Convierte SVG → PDF usando Inkscape (solo si tienes SVGs)
+img/generated/%.pdf: img/%.svg
+	inkscape --export-pdf=$@ $<
+
+# ============================================================
+# EPUB
+# ============================================================
+# Genera cada capítulo como .xhtml dentro de epub/
+epub/%.xhtml: %.md src/render_html.mjs src/epub_chapter.html
+	node src/render_html.mjs --epub $< > $@
+
+# Genera el TOC del EPUB a partir de los .xhtml ya generados
+epub/toc.xhtml: epub/toc.xhtml.src $(foreach CHAP,$(CHAPTERS),epub/$(CHAP).xhtml)
+	node src/generate_epub_toc.mjs $^ > $@
+
+# Ensamblaje final del EPUB:
+#   1. Copia las imágenes referenciadas dentro de epub/
+#   2. Genera content.opf con la lista de imágenes
+#   3. Empaqueta todo en un ZIP con la estructura EPUB
+book.epub: epub/titlepage.xhtml epub/toc.xhtml \
+           $(foreach CHAP,$(CHAPTERS),epub/$(CHAP).xhtml) \
+           epub/content.opf.src epub/style.css src/add_images_to_epub.mjs
+	rm -f $@
+	grep '<img' epub/*.xhtml | sed -e 's/.*src="\([^"]*\)".*/\1/' | xargs -I{} rsync -R "{}" epub 2>/dev/null; true
+	node src/add_images_to_epub.mjs
+	cd epub; zip -X ../$@ mimetype
+	cd epub; zip -X ../$@ -r * -x mimetype -x *.src
+
+# ============================================================
+# Limpieza
+# ============================================================
+clean:
+	rm -f html/[0-9][0-9]_*.html
+	rm -f pdf/[0-9][0-9]_*.tex
+	rm -f epub/[0-9][0-9]_*.xhtml epub/toc.xhtml epub/content.opf
+	rm -f book.pdf book_mobile.pdf book.epub
+	rm -rf epub/img img/generated
+
+.PHONY: all html tex clean

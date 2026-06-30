@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package xmlns="http://www.idpf.org/2007/opf" version="3.0" xml:lang="en" unique-identifier="pub-id" prefix="cc: http://creativecommons.org/ns#">
+  <metadata xmlns:dc="http://purl.org/dc/elements/1.1/">
+    <dc:title id="title">{{book_title}}</dc:title>
+    <meta refines="#title" property="title-type">main</meta>
+    <dc:identifier id="pub-id">ebook</dc:identifier>
+    <dc:language>en-US</dc:language>
+    <meta property="dcterms:modified">2024-01-01T00:00:00Z</meta>
+  </metadata>
+  <manifest>
+{{cover_manifest}}
+    <item id="toc" properties="nav" href="toc.xhtml" media-type="application/xhtml+xml"/>
+{{chapter_manifest}}
+    <item id="style" href="style.css" media-type="text/css"/>
+    <item id="font.cinzel.bold" href="font/cinzel_bold.otf" media-type="application/vnd.ms-opentype"/>
+    <item id="font.pt.regular" href="font/pt_mono.otf" media-type="application/vnd.ms-opentype"/>
+{{images}}
+  </manifest>
+  <spine>
+{{cover_spine}}
+    <itemref idref="toc" linear="yes"/>
+{{chapter_spine}}
+  </spine>
+</package>

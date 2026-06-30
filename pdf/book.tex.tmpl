@@ -1,0 +1,177 @@
+\documentclass[fontsize=13pt,oneside,headings=small,chapterprefix]{scrbook}
+\usepackage{listings}
+\usepackage{graphicx}
+\PassOptionsToPackage{hyphens}{url}\usepackage{hyperref}
+\usepackage{natbib}
+\usepackage{scrhack}
+\usepackage{charter}
+\usepackage{bookmark}
+\usepackage{ucharclasses}
+\usepackage{fontspec}
+\usepackage{xcolor}
+\usepackage{longtable}  % Para tablas que se extienden en múltiples páginas (ANTES de arabxetex/bidi)
+\usepackage{fancybox}   % ANTES de arabxetex/bidi
+\usepackage{adjustbox}  % ANTES de arabxetex/bidi
+\usepackage{arabxetex}
+\usepackage{makeidx}
+\usepackage[normalem]{ulem}
+\usepackage{amssymb}  % Para símbolos □ y ☒
+
+% epigraph is used to style chapter quotes
+\usepackage{epigraph}
+\setlength{\epigraphwidth}{.8\textwidth}
+\setlength{\epigraphrule}{0pt}
+
+\lstdefinelanguage{JavaScript}{%
+  keywords={break,case,catch,class,const,continue,debugger,default,%
+    delete,do,else,export,extends,finally,for,function,if,import,%
+    in,instanceof,let,new,of,return,super,switch,this,throw,try,%
+    typeof,var,void,while,with,yield,async,await,%
+    null,true,false,undefined,NaN,Infinity},
+  sensitive=true,
+  comment=[l]{//},
+  morecomment=[s]{/*}{*/},
+  string=[d]{"}{"},
+  morestring=[d]{'}{'},
+  morestring=[b]{`}
+}%
+\lstdefinelanguage{CSS}{%
+  keywords={},
+  sensitive=false,
+  comment=[s]{/*}{*/},
+  string=[d]{"}{"},
+  morestring=[d]{'}{'}
+}%
+\definecolor{codebg}{HTML}{F0F0F0}
+\lstset{basicstyle=\ttfamily,xleftmargin=0.8em,breaklines=true,lineskip=-0.2em,aboveskip=0.8em,belowskip=0.8em,showstringspaces=false,backgroundcolor=\color{codebg},frame=single,framerule=0pt,frameround=tttt,rulecolor=\color{codebg}}
+\renewcommand*{\chapterheadstartvskip}{\vspace*{3cm}}
+\date{}
+
+\lstset{escapeinside={$<}{>$}}
+% Protect " from arabxetex active-char interference inside listings
+\lstset{literate={"}{{\char34}}{1}{'}{{\char39}}{1}}
+% Ensure \textquotedbl works in \texttt{} for inline code
+\providecommand{\textquotedbl}{\char34}
+
+% Colores para resaltado de sintaxis
+\definecolor{lst-keyword}{HTML}{550066}
+\definecolor{lst-comment}{HTML}{774400}
+\definecolor{lst-string}{HTML}{770000}
+\definecolor{lst-number}{HTML}{0000AA}
+\definecolor{lst-builtin}{HTML}{000080}
+\lstset{
+  keywordstyle=\color{lst-keyword}\bfseries,
+  commentstyle=\color{lst-comment}\itshape,
+  stringstyle=\color{lst-string},
+  numberstyle=\color{lst-number},
+}
+
+\makeatletter
+\lst@InputCatcodes
+\def\lst@DefEC{%
+ \lst@CCECUse \lst@ProcessLetter
+  ^^80^^81^^82^^83^^84^^85^^86^^87^^88^^89^^8a^^8b^^8c^^8d^^8e^^8f%
+  ^^90^^91^^92^^93^^94^^95^^96^^97^^98^^99^^9a^^9b^^9c^^9d^^9e^^9f%
+  ^^a0^^a1^^a2^^a3^^a4^^a5^^a6^^a7^^a8^^a9^^aa^^ab^^ac^^ad^^ae^^af%
+  ^^b0^^b1^^b2^^b3^^b4^^b5^^b6^^b7^^b8^^b9^^ba^^bb^^bc^^bd^^be^^bf%
+  ^^c0^^c1^^c2^^c3^^c4^^c5^^c6^^c7^^c8^^c9^^ca^^cb^^cc^^cd^^ce^^cf%
+  ^^d0^^d1^^d2^^d3^^d4^^d5^^d6^^d7^^d8^^d9^^da^^db^^dc^^dd^^de^^df%
+  ^^e0^^e1^^e2^^e3^^e4^^e5^^e6^^e7^^e8^^e9^^ea^^eb^^ec^^ed^^ee^^ef%
+  ^^f0^^f1^^f2^^f3^^f4^^f5^^f6^^f7^^f8^^f9^^fa^^fb^^fc^^fd^^fe^^ff%
+  тявΧαίρετΑΊΡΤΕ""
+  ^^00}
+\lst@RestoreCatcodes
+\makeatother
+
+\setcounter{secnumdepth}{0}
+\setcounter{tocdepth}{1}
+\setmonofont[Scale=0.8]{DejaVu Sans Mono}
+% Fuentes opcionales — se activan si están instaladas en el sistema:
+% \defaultfontfeatures[\emojifont]{Scale=1.15}
+% \newfontface{\emojifont}{Symbola_hint.ttf}
+% \newfontfamily{\cjkfont}{TW-Sung}
+% \setTransitionsFor{MiscellaneousSymbolsAndPictographs}{\emojifont}{\normalfont}{}
+% \newfontfamily{\cinzel}{Cinzel}
+% \setkomafont{disposition}{\bfseries\cinzel}
+\setkomafont{disposition}{\bfseries}
+\definecolor{silver-chalice}{HTML}{AAAAAA}
+\setkomafont{chapterprefix}{\small\color{silver-chalice}}
+\RedeclareSectionCommand[innerskip=0pt]{chapter}
+
+\pagestyle{plain}
+
+\usepackage{newunicodechar}
+\newunicodechar{π}{$\pi$}
+\newunicodechar{ϕ}{$\varphi$}
+\newunicodechar{≈}{$\approx$}
+\newunicodechar{β}{\ss}
+\newunicodechar{⮪}{\emojifont{⮪}}
+
+\graphicspath{{../}}
+\definecolor{blue-bayoux}{rgb}{0.267,0.4,0.467}
+\definecolor{link-bg}{HTML}{FFFDE7}
+\definecolor{link-color}{HTML}{1A5276}
+\hypersetup{colorlinks=false,pdfborder={0 0 0}}
+% Style links: yellow background + underline (disabled in TOC/index via \linkstylefalse)
+\newif\iflinkstyle\linkstyletrue
+\newcommand{\styledlink}[1]{\iflinkstyle\colorbox{link-bg}{\underline{\textcolor{link-color}{#1}}}\else#1\fi}
+\let\oldhref\href
+\renewcommand{\href}[2]{\oldhref{#1}{\styledlink{#2}}}
+\let\oldhyperref\hyperref
+\renewcommand{\hyperref}[2][x]{\oldhyperref[#1]{\styledlink{#2}}}
+
+% Colores y estilo para admonitions (Nota, Advertencia, Consejo)
+\definecolor{admonition-note-fg}{HTML}{2E86C1}
+\definecolor{admonition-note-bg}{HTML}{EBF5FB}
+\definecolor{admonition-warning-fg}{HTML}{E67E22}
+\definecolor{admonition-warning-bg}{HTML}{FEF5E7}
+\definecolor{admonition-tip-fg}{HTML}{27AE60}
+\definecolor{admonition-tip-bg}{HTML}{EAFAF1}
+\definecolor{admonition-important-fg}{HTML}{8E44AD}
+\definecolor{admonition-important-bg}{HTML}{F5EEF8}
+\definecolor{admonition-caution-fg}{HTML}{C0392B}
+\definecolor{admonition-caution-bg}{HTML}{FADBD8}
+\definecolor{admonition-todo-fg}{HTML}{0891B2}
+\definecolor{admonition-todo-bg}{HTML}{ECFEFF}
+\definecolor{admonition-info-fg}{HTML}{FF9800}
+\definecolor{admonition-info-bg}{HTML}{FFF3E0}
+\newcommand{\admonitionbox}[3]{%
+  \vspace{0.5em}%
+  {\setlength{\fboxsep}{6pt}\setlength{\fboxrule}{0.8pt}%
+  \noindent\fcolorbox{#1}{#2}{%
+    \parbox{\dimexpr\linewidth - 2\fboxsep - 2\fboxrule\relax}{%
+      \emergencystretch=3em%      % Permite espaciado extra en emergencias
+      \tolerance=9999%            % Tolerante con espaciado entre palabras
+      \hyphenpenalty=1000%        % Reduce penalidad por guiones
+      \hbadness=10000%            % Suprime warnings cosméticos
+      #3%
+    }%
+  }}%
+  \vspace{0.5em}%
+}
+
+\makeindex
+
+\begin{document}
+
+{{cover}}
+
+{
+  \linkstylefalse
+  \hypersetup{hidelinks}
+  \tableofcontents
+}
+
+\mainmatter
+
+{{chapters}}
+
+\backmatter
+
+{
+  \linkstylefalse
+  \hypersetup{hidelinks}
+  \printindex
+}
+
+\end{document}

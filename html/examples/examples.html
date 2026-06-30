@@ -1,0 +1,1052 @@
+<!doctype html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Manual de Formato</title>
+  <link rel=stylesheet href="css/ejs.css"><script>
+      var page = {"type":"chapter","number":0}</script></head>
+
+<article>
+<nav><a href="index.html" title="cover" aria-label="cover">●</a>&nbsp;<button class=help title="help" aria-label="help"><strong>?</strong></button>
+</nav>
+
+<div id="toc-wrap"></div>
+
+<h1>Manual de Formato</h1>
+
+<p><a class="p_ident" id="p-AvmSyJhmRD" href="#p-AvmSyJhmRD" tabindex="-1" role="presentation"></a>Este capítulo recorre todas las construcciones sintácticas disponibles en el sistema. Cada sección muestra primero la sintaxis fuente y luego el resultado renderizado.</p>
+
+<h2><a class="h_ident" id="h-wObFWKUzth" href="#h-wObFWKUzth" tabindex="-1" role="presentation"></a>1. Bloques de Código</h2>
+
+<p><a class="p_ident" id="p-E5VMBVLpPn" href="#p-E5VMBVLpPn" tabindex="-1" role="presentation"></a>Los bloques de código se delimitan con tres backticks y un identificador de lenguaje estándar. Para mostrar el código fuente sin highlight se deja el bloque sin lenguaje.</p>
+
+<h3><a class="i_ident" id="i-xpaKXUrIhk" href="#i-xpaKXUrIhk" tabindex="-1" role="presentation"></a>1.1 JavaScript</h3>
+
+<p><a class="p_ident" id="p-09qIs8E+eq" href="#p-09qIs8E+eq" tabindex="-1" role="presentation"></a>Sintaxis:</p>
+
+<pre class="snippet" data-language="markdown" ><a class="c_ident" id="c-KTcU2JmRbH" href="#c-KTcU2JmRbH" tabindex="-1" role="presentation"></a><code class="language-markdown">```js
+function suma(a, b) {
+  return a + b;
+}
+console.log(suma(2, 3));
+```</code></pre>
+
+<p><a class="p_ident" id="p-x1idvykMiU" href="#p-x1idvykMiU" tabindex="-1" role="presentation"></a>Resultado:</p>
+
+<pre tabindex="0" class="snippet" data-language="javascript" ><a class="c_ident" id="c-5KS4skT/Et" href="#c-5KS4skT/Et" tabindex="-1" role="presentation"></a><code class="language-javascript"><span class="tok-keyword">function</span> <span class="tok-variableName tok-definition">suma</span>(<span class="tok-variableName tok-definition">a</span>, <span class="tok-variableName tok-definition">b</span>) {
+  <span class="tok-keyword">return</span> <span class="tok-variableName">a</span> + <span class="tok-variableName">b</span>;
+}
+<span class="tok-variableName">console</span>.<span class="tok-propertyName">log</span>(<span class="tok-variableName">suma</span>(<span class="tok-number">2</span>, <span class="tok-number">3</span>));</code></pre>
+
+<h3><a class="i_ident" id="i-bRmh+epHoc" href="#i-bRmh+epHoc" tabindex="-1" role="presentation"></a>1.2 Python</h3>
+
+<p><a class="p_ident" id="p-09qIs8E+eq_1" href="#p-09qIs8E+eq_1" tabindex="-1" role="presentation"></a>Sintaxis:</p>
+
+<pre class="snippet" data-language="markdown" ><a class="c_ident" id="c-hYW7oovM4f" href="#c-hYW7oovM4f" tabindex="-1" role="presentation"></a><code class="language-markdown">```py
+def suma(a, b):
+    return a + b
+
+print(suma(2, 3))
+```</code></pre>
+
+<p><a class="p_ident" id="p-x1idvykMiU_1" href="#p-x1idvykMiU_1" tabindex="-1" role="presentation"></a>Resultado:</p>
+
+<pre tabindex="0" class="snippet" data-language="python" ><a class="c_ident" id="c-/V4TH6wunR" href="#c-/V4TH6wunR" tabindex="-1" role="presentation"></a><code class="language-python"><span class="tok-keyword">def</span> <span class="tok-variableName tok-definition">suma</span>(<span class="tok-variableName">a</span>, <span class="tok-variableName">b</span>):
+    <span class="tok-keyword">return</span> <span class="tok-variableName">a</span> + <span class="tok-variableName">b</span>
+
+<span class="tok-variableName">print</span>(<span class="tok-variableName">suma</span>(<span class="tok-number">2</span>, <span class="tok-number">3</span>))</code></pre>
+
+<h3><a class="i_ident" id="i-9VeM8ZNsWo" href="#i-9VeM8ZNsWo" tabindex="-1" role="presentation"></a>1.3 HTML</h3>
+
+<p><a class="p_ident" id="p-09qIs8E+eq_2" href="#p-09qIs8E+eq_2" tabindex="-1" role="presentation"></a>Sintaxis:</p>
+
+<pre class="snippet" data-language="markdown" ><a class="c_ident" id="c-/L7nEJeEz6" href="#c-/L7nEJeEz6" tabindex="-1" role="presentation"></a><code class="language-markdown">```html
+&lt;div class=&quot;contenedor&quot;&gt;
+  &lt;h1&gt;Hola mundo&lt;/h1&gt;
+  &lt;p&gt;Este es un párrafo.&lt;/p&gt;
+&lt;/div&gt;
+```</code></pre>
+
+<p><a class="p_ident" id="p-x1idvykMiU_2" href="#p-x1idvykMiU_2" tabindex="-1" role="presentation"></a>Resultado:</p>
+
+<pre tabindex="0" class="snippet" data-language="html" ><a class="c_ident" id="c-R6ObkqtATH" href="#c-R6ObkqtATH" tabindex="-1" role="presentation"></a><code class="language-html">&lt;<span class="tok-typeName">div</span> <span class="tok-propertyName">class</span>=<span class="tok-string">&quot;contenedor&quot;</span>&gt;
+  &lt;<span class="tok-typeName">h1</span>&gt;Hola mundo&lt;/<span class="tok-typeName">h1</span>&gt;
+  &lt;<span class="tok-typeName">p</span>&gt;Este es un párrafo.&lt;/<span class="tok-typeName">p</span>&gt;
+&lt;/<span class="tok-typeName">div</span>&gt;</code></pre>
+
+<h3><a class="i_ident" id="i-0LVjoCCmLc" href="#i-0LVjoCCmLc" tabindex="-1" role="presentation"></a>1.4 CSS</h3>
+
+<pre class="snippet" data-language="markdown" ><a class="c_ident" id="c-ZXH/cOpNue" href="#c-ZXH/cOpNue" tabindex="-1" role="presentation"></a><code class="language-markdown">```css
+.contenedor {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 1em 2em;
+}
+```</code></pre>
+
+<p><a class="p_ident" id="p-x1idvykMiU_3" href="#p-x1idvykMiU_3" tabindex="-1" role="presentation"></a>Resultado:</p>
+
+<pre class="snippet" data-language="css" ><a class="c_ident" id="c-pgOMR+ne+x" href="#c-pgOMR+ne+x" tabindex="-1" role="presentation"></a><code class="language-css">.contenedor {
+  <span class="tok-propertyName">max-width</span>: <span class="tok-number">800</span><span class="tok-keyword">px</span>;
+  <span class="tok-propertyName">margin</span>: <span class="tok-number">0</span> <span class="tok-atom">auto</span>;
+  <span class="tok-propertyName">padding</span>: <span class="tok-number">1</span><span class="tok-keyword">em</span> <span class="tok-number">2</span><span class="tok-keyword">em</span>;
+}</code></pre>
+
+<h3><a class="i_ident" id="i-UYZk5W98XW" href="#i-UYZk5W98XW" tabindex="-1" role="presentation"></a>1.5 TypeScript</h3>
+
+<pre class="snippet" data-language="markdown" ><a class="c_ident" id="c-04Ee7vrGUx" href="#c-04Ee7vrGUx" tabindex="-1" role="presentation"></a><code class="language-markdown">```ts
+interface Punto {
+  x: number;
+  y: number;
+}
+
+function distancia(a: Punto, b: Punto): number {
+  return Math.sqrt((a.x - b.x) ** 2 + (a.y - b.y) ** 2);
+}
+```</code></pre>
+
+<p><a class="p_ident" id="p-x1idvykMiU_4" href="#p-x1idvykMiU_4" tabindex="-1" role="presentation"></a>Resultado:</p>
+
+<pre class="snippet" data-language="typescript" ><a class="c_ident" id="c-16twk9zsRT" href="#c-16twk9zsRT" tabindex="-1" role="presentation"></a><code class="language-typescript"><span class="tok-keyword">interface</span> <span class="tok-typeName">Punto</span> {
+  <span class="tok-propertyName tok-definition">x</span>: <span class="tok-typeName">number</span>;
+  <span class="tok-propertyName tok-definition">y</span>: <span class="tok-typeName">number</span>;
+}
+
+<span class="tok-keyword">function</span> <span class="tok-variableName tok-definition">distancia</span>(<span class="tok-variableName tok-definition">a</span>: <span class="tok-typeName">Punto</span>, <span class="tok-variableName tok-definition">b</span>: <span class="tok-typeName">Punto</span>): <span class="tok-typeName">number</span> {
+  <span class="tok-keyword">return</span> <span class="tok-variableName">Math</span>.<span class="tok-propertyName">sqrt</span>((<span class="tok-variableName">a</span>.<span class="tok-propertyName">x</span> - <span class="tok-variableName">b</span>.<span class="tok-propertyName">x</span>) ** <span class="tok-number">2</span> + (<span class="tok-variableName">a</span>.<span class="tok-propertyName">y</span> - <span class="tok-variableName">b</span>.<span class="tok-propertyName">y</span>) ** <span class="tok-number">2</span>);
+}</code></pre>
+
+<h3><a class="i_ident" id="i-x++UG2GmkJ" href="#i-x++UG2GmkJ" tabindex="-1" role="presentation"></a>1.6 JSON</h3>
+
+<pre class="snippet" data-language="markdown" ><a class="c_ident" id="c-6sRuhKTD7/" href="#c-6sRuhKTD7/" tabindex="-1" role="presentation"></a><code class="language-markdown">```json
+{
+  &quot;nombre&quot;: &quot;ejemplo&quot;,
+  &quot;version&quot;: &quot;1.0.0&quot;,
+  &quot;dependencias&quot;: {
+    &quot;markdown-it&quot;: &quot;^14.0.0&quot;
+  }
+}
+```</code></pre>
+
+<p><a class="p_ident" id="p-x1idvykMiU_5" href="#p-x1idvykMiU_5" tabindex="-1" role="presentation"></a>Resultado:</p>
+
+<pre class="snippet" data-language="json" ><a class="c_ident" id="c-5AeRY6XkKJ" href="#c-5AeRY6XkKJ" tabindex="-1" role="presentation"></a><code class="language-json">{
+  <span class="tok-string">&quot;nombre&quot;</span>: <span class="tok-string">&quot;ejemplo&quot;</span>,
+  <span class="tok-string">&quot;version&quot;</span>: <span class="tok-string">&quot;1.0.0&quot;</span>,
+  <span class="tok-string">&quot;dependencias&quot;</span>: {
+    <span class="tok-string">&quot;markdown-it&quot;</span>: <span class="tok-string">&quot;^14.0.0&quot;</span>
+  }
+}</code></pre>
+
+<h3><a class="i_ident" id="i-JH4xPmKw0z" href="#i-JH4xPmKw0z" tabindex="-1" role="presentation"></a>1.7 Sin highlight</h3>
+
+<p><a class="p_ident" id="p-jPZMjkhLOQ" href="#p-jPZMjkhLOQ" tabindex="-1" role="presentation"></a>Cuando no se especifica lenguaje el bloque se muestra tal cual, sin colorear. Esto también permite mostrar directivas <code>{{ }}</code> como texto literal:</p>
+
+<pre class="snippet" data-language="markdown" ><a class="c_ident" id="c-aq4MXgZtRK" href="#c-aq4MXgZtRK" tabindex="-1" role="presentation"></a><code class="language-markdown">```
+{{figure {url: &quot;img/cat.png&quot;, alt: &quot;Un gato&quot;}}}
+```</code></pre>
+
+<p><a class="p_ident" id="p-x1idvykMiU_6" href="#p-x1idvykMiU_6" tabindex="-1" role="presentation"></a>Resultado:</p>
+
+<pre class="snippet" data-language="null" ><a class="c_ident" id="c-tYrLeDNrlp" href="#c-tYrLeDNrlp" tabindex="-1" role="presentation"></a><code class="language-null">{{figure {url: &quot;img/cat.png&quot;, alt: &quot;Un gato&quot;}}}</code></pre>
+
+<h3><a class="i_ident" id="i-VLlPyjLhhw" href="#i-VLlPyjLhhw" tabindex="-1" role="presentation"></a>1.8 PHP</h3>
+
+<p><a class="p_ident" id="p-09qIs8E+eq_3" href="#p-09qIs8E+eq_3" tabindex="-1" role="presentation"></a>Sintaxis:</p>
+
+<pre class="snippet" data-language="markdown" ><a class="c_ident" id="c-rKXOZw9NsN" href="#c-rKXOZw9NsN" tabindex="-1" role="presentation"></a><code class="language-markdown">```php
+&lt;?php
+function suma(int $a, int $b): int {
+    return $a + $b;
+}
+echo suma(2, 3);
+```</code></pre>
+
+<p><a class="p_ident" id="p-x1idvykMiU_7" href="#p-x1idvykMiU_7" tabindex="-1" role="presentation"></a>Resultado:</p>
+
+<pre class="snippet" data-language="php" ><a class="c_ident" id="c-+8PhTeDRHw" href="#c-+8PhTeDRHw" tabindex="-1" role="presentation"></a><code class="language-php"><span class="tok-meta">&lt;?php</span>
+<span class="tok-keyword">function</span> <span class="tok-variableName tok-definition">suma</span>(<span class="tok-typeName">int</span> <span class="tok-variableName">$a</span>, <span class="tok-typeName">int</span> <span class="tok-variableName">$b</span>): <span class="tok-typeName">int</span> {
+    <span class="tok-keyword">return</span> <span class="tok-variableName">$a</span> + <span class="tok-variableName">$b</span>;
+}
+<span class="tok-keyword">echo</span> <span class="tok-variableName">suma</span>(<span class="tok-number">2</span>, <span class="tok-number">3</span>);</code></pre>
+
+<h3><a class="i_ident" id="i-fSzcAK5uqq" href="#i-fSzcAK5uqq" tabindex="-1" role="presentation"></a>1.9 XML</h3>
+
+<p><a class="p_ident" id="p-09qIs8E+eq_4" href="#p-09qIs8E+eq_4" tabindex="-1" role="presentation"></a>Sintaxis:</p>
+
+<pre class="snippet" data-language="markdown" ><a class="c_ident" id="c-rT3SP+4JR5" href="#c-rT3SP+4JR5" tabindex="-1" role="presentation"></a><code class="language-markdown">```xml
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;libro&gt;
+  &lt;capítulo numero=&quot;1&quot;&gt;
+    &lt;título&gt;Introducción&lt;/título&gt;
+    &lt;párrafo&gt;Contenido del capítulo.&lt;/párrafo&gt;
+  &lt;/capítulo&gt;
+&lt;/libro&gt;
+```</code></pre>
+
+<p><a class="p_ident" id="p-x1idvykMiU_8" href="#p-x1idvykMiU_8" tabindex="-1" role="presentation"></a>Resultado:</p>
+
+<pre class="snippet" data-language="xml" ><a class="c_ident" id="c-Cnt6vnvFTD" href="#c-Cnt6vnvFTD" tabindex="-1" role="presentation"></a><code class="language-xml"><span class="tok-meta">&lt;?xml</span> <span class="tok-meta">version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+&lt;<span class="tok-typeName">libro</span>&gt;
+  &lt;<span class="tok-typeName">capítulo</span> <span class="tok-propertyName">numero</span>=<span class="tok-string">&quot;1&quot;</span>&gt;
+    &lt;<span class="tok-typeName">título</span>&gt;Introducción&lt;/<span class="tok-typeName">título</span>&gt;
+    &lt;<span class="tok-typeName">párrafo</span>&gt;Contenido del capítulo.&lt;/<span class="tok-typeName">párrafo</span>&gt;
+  &lt;/<span class="tok-typeName">capítulo</span>&gt;
+&lt;/<span class="tok-typeName">libro</span>&gt;</code></pre>
+
+<h3><a class="i_ident" id="i-Sb0KDrRo+h" href="#i-Sb0KDrRo+h" tabindex="-1" role="presentation"></a>1.10 Java</h3>
+
+<p><a class="p_ident" id="p-09qIs8E+eq_5" href="#p-09qIs8E+eq_5" tabindex="-1" role="presentation"></a>Sintaxis:</p>
+
+<pre class="snippet" data-language="markdown" ><a class="c_ident" id="c-Hjq4TFi7sj" href="#c-Hjq4TFi7sj" tabindex="-1" role="presentation"></a><code class="language-markdown">```java
+public class Suma {
+    public static int suma(int a, int b) {
+        return a + b;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(suma(2, 3));
+    }
+}
+```</code></pre>
+
+<p><a class="p_ident" id="p-x1idvykMiU_9" href="#p-x1idvykMiU_9" tabindex="-1" role="presentation"></a>Resultado:</p>
+
+<pre tabindex="0" class="snippet" data-language="java" ><a class="c_ident" id="c-q6byMHBtdx" href="#c-q6byMHBtdx" tabindex="-1" role="presentation"></a><code class="language-java"><span class="tok-keyword">public</span> <span class="tok-keyword">class</span> <span class="tok-variableName tok-definition">Suma</span> {
+    <span class="tok-keyword">public</span> <span class="tok-keyword">static</span> <span class="tok-typeName">int</span> <span class="tok-variableName">suma</span>(<span class="tok-typeName">int</span> <span class="tok-variableName">a</span>, <span class="tok-typeName">int</span> <span class="tok-variableName">b</span>) {
+        <span class="tok-keyword">return</span> <span class="tok-variableName">a</span> + <span class="tok-variableName">b</span>;
+    }
+
+    <span class="tok-keyword">public</span> <span class="tok-keyword">static</span> <span class="tok-typeName">void</span> <span class="tok-variableName">main</span>(<span class="tok-typeName">String</span>[] <span class="tok-variableName">args</span>) {
+        <span class="tok-variableName">System</span>.<span class="tok-variableName">out</span>.<span class="tok-variableName">println</span>(<span class="tok-variableName">suma</span>(<span class="tok-number">2</span>, <span class="tok-number">3</span>));
+    }
+}</code></pre>
+
+<h3><a class="i_ident" id="i-Xl+qTCcu/9" href="#i-Xl+qTCcu/9" tabindex="-1" role="presentation"></a>1.11 Go</h3>
+
+<p><a class="p_ident" id="p-09qIs8E+eq_6" href="#p-09qIs8E+eq_6" tabindex="-1" role="presentation"></a>Sintaxis:</p>
+
+<pre class="snippet" data-language="markdown" ><a class="c_ident" id="c-iKRR7I1oY1" href="#c-iKRR7I1oY1" tabindex="-1" role="presentation"></a><code class="language-markdown">```go
+package main
+
+import &quot;fmt&quot;
+
+func suma(a, b int) int {
+    return a + b
+}
+
+func main() {
+    fmt.Println(suma(2, 3))
+}
+```</code></pre>
+
+<p><a class="p_ident" id="p-x1idvykMiU_10" href="#p-x1idvykMiU_10" tabindex="-1" role="presentation"></a>Resultado:</p>
+
+<pre class="snippet" data-language="go" ><a class="c_ident" id="c-q9bzU60HeN" href="#c-q9bzU60HeN" tabindex="-1" role="presentation"></a><code class="language-go"><span class="tok-keyword">package</span> <span class="tok-variableName">main</span>
+
+<span class="tok-keyword">import</span> <span class="tok-string">&quot;fmt&quot;</span>
+
+<span class="tok-keyword">func</span> <span class="tok-variableName">suma</span>(<span class="tok-variableName">a</span>, <span class="tok-variableName">b</span> <span class="tok-keyword">int</span>) <span class="tok-keyword">int</span> {
+    <span class="tok-keyword">return</span> <span class="tok-variableName">a</span> + <span class="tok-variableName">b</span>
+}
+
+<span class="tok-keyword">func</span> <span class="tok-variableName">main</span>() {
+    <span class="tok-variableName">fmt</span><span class="tok-number">.</span><span class="tok-variableName">Println</span>(<span class="tok-variableName">suma</span>(<span class="tok-number">2</span>, <span class="tok-number">3</span>))
+}</code></pre>
+
+<h3><a class="i_ident" id="i-1OTaqAGKpV" href="#i-1OTaqAGKpV" tabindex="-1" role="presentation"></a>1.12 C</h3>
+
+<p><a class="p_ident" id="p-09qIs8E+eq_7" href="#p-09qIs8E+eq_7" tabindex="-1" role="presentation"></a>Sintaxis:</p>
+
+<pre class="snippet" data-language="markdown" ><a class="c_ident" id="c-lbRFeasJAz" href="#c-lbRFeasJAz" tabindex="-1" role="presentation"></a><code class="language-markdown">```c
+#include &lt;stdio.h&gt;
+
+int suma(int a, int b) {
+    return a + b;
+}
+
+int main() {
+    printf(&quot;Resultado: %d\n&quot;, suma(2, 3));
+    return 0;
+}
+```</code></pre>
+
+<p><a class="p_ident" id="p-x1idvykMiU_11" href="#p-x1idvykMiU_11" tabindex="-1" role="presentation"></a>Resultado:</p>
+
+<pre tabindex="0" class="snippet" data-language="c" ><a class="c_ident" id="c-ZzVwO9xB4p" href="#c-ZzVwO9xB4p" tabindex="-1" role="presentation"></a><code class="language-c"><span class="tok-meta">#include &lt;stdio.h&gt;</span>
+
+<span class="tok-typeName">int</span> <span class="tok-variableName tok-definition">suma</span>(<span class="tok-typeName">int</span> <span class="tok-variableName">a</span>, <span class="tok-typeName">int</span> <span class="tok-variableName">b</span>) {
+    <span class="tok-keyword">return</span> <span class="tok-variableName">a</span> + <span class="tok-variableName">b</span>;
+}
+
+<span class="tok-typeName">int</span> <span class="tok-variableName tok-definition">main</span>() {
+    <span class="tok-variableName">printf</span>(<span class="tok-string">&quot;Resultado: %d\n&quot;</span>, <span class="tok-variableName">suma</span>(<span class="tok-number">2</span>, <span class="tok-number">3</span>));
+    <span class="tok-keyword">return</span> <span class="tok-number">0</span>;
+}</code></pre>
+
+<h3><a class="i_ident" id="i-QnE1BeLT5U" href="#i-QnE1BeLT5U" tabindex="-1" role="presentation"></a>1.13 C++</h3>
+
+<p><a class="p_ident" id="p-09qIs8E+eq_8" href="#p-09qIs8E+eq_8" tabindex="-1" role="presentation"></a>Sintaxis:</p>
+
+<pre class="snippet" data-language="markdown" ><a class="c_ident" id="c-lMA5oXv80A" href="#c-lMA5oXv80A" tabindex="-1" role="presentation"></a><code class="language-markdown">```cpp
+#include &lt;iostream&gt;
+using namespace std;
+
+int suma(int a, int b) {
+    return a + b;
+}
+
+int main() {
+    cout &lt;&lt; &quot;Resultado: &quot; &lt;&lt; suma(2, 3) &lt;&lt; endl;
+    return 0;
+}
+```</code></pre>
+
+<p><a class="p_ident" id="p-x1idvykMiU_12" href="#p-x1idvykMiU_12" tabindex="-1" role="presentation"></a>Resultado:</p>
+
+<pre tabindex="0" class="snippet" data-language="cpp" ><a class="c_ident" id="c-Idh4jQgCbP" href="#c-Idh4jQgCbP" tabindex="-1" role="presentation"></a><code class="language-cpp"><span class="tok-meta">#include &lt;iostream&gt;</span>
+<span class="tok-keyword">using</span> <span class="tok-keyword">namespace</span> <span class="tok-variableName tok-definition">std</span>;
+
+<span class="tok-typeName">int</span> <span class="tok-variableName tok-definition">suma</span>(<span class="tok-typeName">int</span> <span class="tok-variableName">a</span>, <span class="tok-typeName">int</span> <span class="tok-variableName">b</span>) {
+    <span class="tok-keyword">return</span> <span class="tok-variableName">a</span> + <span class="tok-variableName">b</span>;
+}
+
+<span class="tok-typeName">int</span> <span class="tok-variableName tok-definition">main</span>() {
+    <span class="tok-variableName">cout</span> &lt;&lt; <span class="tok-string">&quot;Resultado: &quot;</span> &lt;&lt; <span class="tok-variableName">suma</span>(<span class="tok-number">2</span>, <span class="tok-number">3</span>) &lt;&lt; <span class="tok-variableName">endl</span>;
+    <span class="tok-keyword">return</span> <span class="tok-number">0</span>;
+}</code></pre>
+
+<h3><a class="i_ident" id="i-dFgwMaOXL4" href="#i-dFgwMaOXL4" tabindex="-1" role="presentation"></a>1.14 Pascal</h3>
+
+<p><a class="p_ident" id="p-09qIs8E+eq_9" href="#p-09qIs8E+eq_9" tabindex="-1" role="presentation"></a>Sintaxis:</p>
+
+<pre class="snippet" data-language="markdown" ><a class="c_ident" id="c-Dqz12CQK/r" href="#c-Dqz12CQK/r" tabindex="-1" role="presentation"></a><code class="language-markdown">```pascal
+program Suma;
+
+function Suma(a, b: integer): integer;
+begin
+    Suma := a + b;
+end;
+
+begin
+    WriteLn('Resultado: ', Suma(2, 3));
+end.
+```</code></pre>
+
+<p><a class="p_ident" id="p-x1idvykMiU_13" href="#p-x1idvykMiU_13" tabindex="-1" role="presentation"></a>Resultado:</p>
+
+<pre class="snippet" data-language="pascal" ><a class="c_ident" id="c-VC6KNmArz8" href="#c-VC6KNmArz8" tabindex="-1" role="presentation"></a><code class="language-pascal"><span class="tok-keyword">program</span> <span class="tok-variableName">Suma</span>;
+
+<span class="tok-keyword">function</span> <span class="tok-variableName">Suma</span>(<span class="tok-variableName">a</span>, <span class="tok-variableName">b</span>: <span class="tok-variableName">integer</span>): <span class="tok-variableName">integer</span>;
+<span class="tok-keyword">begin</span>
+    <span class="tok-variableName">Suma</span> := <span class="tok-variableName">a</span> + <span class="tok-variableName">b</span>;
+<span class="tok-keyword">end</span>;
+
+<span class="tok-keyword">begin</span>
+    <span class="tok-variableName">WriteLn</span>(<span class="tok-string">'Resultado: '</span>, <span class="tok-variableName">Suma</span>(<span class="tok-number">2</span>, <span class="tok-number">3</span>));
+<span class="tok-keyword">end</span>.</code></pre>
+
+<h2><a class="h_ident" id="h-VOAE+29MTB" href="#h-VOAE+29MTB" tabindex="-1" role="presentation"></a>2. Imágenes</h2>
+
+<p><a class="p_ident" id="p-TnLMqJmQvT" href="#p-TnLMqJmQvT" tabindex="-1" role="presentation"></a>Las imágenes se insertan con la sintaxis estándar <code>![alt](url)</code>. Para opciones adicionales (marco, ancho, estilo capítulo) se coloca un comentario <code>&lt;!-- figure-options: {…} --&gt;</code> inmediatamente antes de la imagen.</p>
+
+<h3><a class="i_ident" id="i-QF8/zY+gNb" href="#i-QF8/zY+gNb" tabindex="-1" role="presentation"></a>2.1 Imagen Normal</h3>
+
+<p><a class="p_ident" id="p-09qIs8E+eq_10" href="#p-09qIs8E+eq_10" tabindex="-1" role="presentation"></a>Sintaxis:</p>
+
+<pre class="snippet" data-language="markdown" ><a class="c_ident" id="c-GnGhZiZgnT" href="#c-GnGhZiZgnT" tabindex="-1" role="presentation"></a><code class="language-markdown">![Un gato sentado](img/cat.png)</code></pre>
+
+<p><a class="p_ident" id="p-+1SJ8HhkQP" href="#p-+1SJ8HhkQP" tabindex="-1" role="presentation"></a>El resultado se ve así:</p><figure><img src="img/cat.png" alt="Un gato sentado"></figure>
+
+<h3><a class="i_ident" id="i-PzFGBVa79G" href="#i-PzFGBVa79G" tabindex="-1" role="presentation"></a>2.2 Imagen de Capítulo</h3>
+
+<p><a class="p_ident" id="p-mg0OLjqk4a" href="#p-mg0OLjqk4a" tabindex="-1" role="presentation"></a>La opción <code>chapter: true</code> centra la imagen y la presenta en estilo portada de capítulo:</p>
+
+<pre class="snippet" data-language="markdown" ><a class="c_ident" id="c-j/KtZhlBjv" href="#c-j/KtZhlBjv" tabindex="-1" role="presentation"></a><code class="language-markdown">&lt;!-- figure-options: {chapter: true} --&gt;
+
+![Imagen de capítulo](img/chapter_picture_00.jpg)</code></pre>
+
+<p><a class="p_ident" id="p-x1idvykMiU_14" href="#p-x1idvykMiU_14" tabindex="-1" role="presentation"></a>Resultado:</p><figure class="chapter true"><img src="img/chapter_picture_00.jpg" alt="Imagen de capítulo"></figure>
+
+<h3><a class="i_ident" id="i-DXhaTzheKg" href="#i-DXhaTzheKg" tabindex="-1" role="presentation"></a>2.3 Imagen Circular (framed)</h3>
+
+<p><a class="p_ident" id="p-k9/UqkB0hL" href="#p-k9/UqkB0hL" tabindex="-1" role="presentation"></a>La opción <code>chapter: &quot;framed&quot;</code> produce una imagen con marco circular:</p>
+
+<pre class="snippet" data-language="markdown" ><a class="c_ident" id="c-XUsYBypjh/" href="#c-XUsYBypjh/" tabindex="-1" role="presentation"></a><code class="language-markdown">&lt;!-- figure-options: {chapter: &quot;framed&quot;} --&gt;
+
+![Un avestruz](img/ostrich.png)</code></pre>
+
+<p><a class="p_ident" id="p-x1idvykMiU_15" href="#p-x1idvykMiU_15" tabindex="-1" role="presentation"></a>Resultado:</p><figure class="chapter framed"><img src="img/ostrich.png" alt="Un avestruz"></figure>
+
+<h3><a class="i_ident" id="i-2DvDhPnDLC" href="#i-2DvDhPnDLC" tabindex="-1" role="presentation"></a>2.4 Imagen Square-Framed</h3>
+
+<p><a class="p_ident" id="p-NaRn7PNRaL" href="#p-NaRn7PNRaL" tabindex="-1" role="presentation"></a>Para un marco con esquinas redondeadas se usa <code>chapter: &quot;square-framed&quot;</code>:</p>
+
+<pre class="snippet" data-language="markdown" ><a class="c_ident" id="c-/eNv2UxZQz" href="#c-/eNv2UxZQz" tabindex="-1" role="presentation"></a><code class="language-markdown">&lt;!-- figure-options: {chapter: &quot;square-framed&quot;} --&gt;
+
+![Un robot inactivo](img/ostrich.png)</code></pre>
+
+<p><a class="p_ident" id="p-x1idvykMiU_16" href="#p-x1idvykMiU_16" tabindex="-1" role="presentation"></a>Resultado:</p><figure class="chapter square-framed"><img src="img/ostrich.png" alt="Un robot inactivo"></figure>
+
+<h3><a class="i_ident" id="i-KYFjp6l1IL" href="#i-KYFjp6l1IL" tabindex="-1" role="presentation"></a>2.5 Imagen con Ancho Personalizado</h3>
+
+<p><a class="p_ident" id="p-pxQ+9sie0r" href="#p-pxQ+9sie0r" tabindex="-1" role="presentation"></a>La opción <code>width</code> permite controlar el ancho de la imagen (tiene efecto especialmente en PDF):</p>
+
+<pre class="snippet" data-language="markdown" ><a class="c_ident" id="c-p2UagG7Umh" href="#c-p2UagG7Umh" tabindex="-1" role="presentation"></a><code class="language-markdown">&lt;!-- figure-options: {width: &quot;6cm&quot;} --&gt;
+
+![Lista enlazada](img/linked-list.svg)</code></pre>
+
+<p><a class="p_ident" id="p-x1idvykMiU_17" href="#p-x1idvykMiU_17" tabindex="-1" role="presentation"></a>Resultado:</p><figure><img src="img/linked-list.svg" alt="Lista enlazada"></figure>
+
+<p><a class="p_ident" id="p-arSKbX7qUx" href="#p-arSKbX7qUx" tabindex="-1" role="presentation"></a>Otro ejemplo con un ancho diferente:</p><figure><img src="img/html-tree.svg" alt="Árbol HTML"></figure>
+
+<h2><a class="h_ident" id="h-/QSXuURbMe" href="#h-/QSXuURbMe" tabindex="-1" role="presentation"></a>3. Tablas</h2>
+
+<p><a class="p_ident" id="p-JG/AjScrwM" href="#p-JG/AjScrwM" tabindex="-1" role="presentation"></a>Las tablas se escriben con la sintaxis de pipe estándar de GitHub Flavored Markdown. La fila separadora <code>|---|</code> es requerida por GFM y el script la elimina automáticamente al convertir:</p>
+
+<pre class="snippet" data-language="markdown" ><a class="c_ident" id="c-qSkNe8nCQw" href="#c-qSkNe8nCQw" tabindex="-1" role="presentation"></a><code class="language-markdown">| Formato          | Extensión   | Generador                  |
+| ---------------- | ----------- | -------------------------- |
+| HTML interactivo | .html       | render_html.mjs            |
+| EPUB             | .xhtml      | render_html.mjs --epub     |
+| PDF              | .tex → .pdf | render_latex.mjs + xelatex |</code></pre>
+
+<p><a class="p_ident" id="p-x1idvykMiU_18" href="#p-x1idvykMiU_18" tabindex="-1" role="presentation"></a>Resultado:</p>
+
+<table>
+
+<tr><td>Formato</td><td>Extensión</td><td>Generador</td>
+
+</tr>
+
+<tr><td>HTML interactivo</td><td>.html</td><td>render_html.mjs</td>
+
+</tr>
+
+<tr><td>EPUB</td><td>.xhtml</td><td>render_html.mjs --epub</td>
+
+</tr>
+
+<tr><td>PDF</td><td>.tex → .pdf</td><td>render_latex.mjs + xelatex</td>
+
+</tr>
+
+</table>
+
+<p><a class="p_ident" id="p-GXl4i6+TPG" href="#p-GXl4i6+TPG" tabindex="-1" role="presentation"></a>Una tabla más extensa comparando tipos de imágenes:</p>
+
+<table>
+
+<tr><td>Tipo</td><td>Sintaxis clave</td><td>Imagen de ejemplo</td>
+
+</tr>
+
+<tr><td>Normal</td><td>url, alt</td><td>cat.png</td>
+
+</tr>
+
+<tr><td>Capítulo</td><td>chapter: true</td><td>chapter_picture_00.jpg</td>
+
+</tr>
+
+<tr><td>Circular</td><td>chapter: “framed”</td><td>ostrich.png</td>
+
+</tr>
+
+<tr><td>Square-framed</td><td>chapter: “square-framed”</td><td>robot_idle.png</td>
+
+</tr>
+
+<tr><td>Con ancho</td><td>width: “Xcm”</td><td>linked-list.svg</td>
+
+</tr>
+
+<tr><td>Adicional</td><td>—</td><td>canvas_pie_chart.png</td>
+
+</tr>
+
+</table>
+
+<h2><a class="h_ident" id="h-mNi4y81iGb" href="#h-mNi4y81iGb" tabindex="-1" role="presentation"></a>4. Admoniciones</h2>
+
+<p><a class="p_ident" id="p-WUF9wBdjhm" href="#p-WUF9wBdjhm" tabindex="-1" role="presentation"></a>Las admoniciones se escriben con la sintaxis de alertas de GitHub (<code>&gt; [!TIPO]</code>). El script las convierte a <code>&lt;div class=&quot;admonition&quot;&gt;</code> del proyecto.</p>
+
+<h3><a class="i_ident" id="i-Da8YM+tC1O" href="#i-Da8YM+tC1O" tabindex="-1" role="presentation"></a>4.1 Note</h3>
+
+<pre class="snippet" data-language="markdown" ><a class="c_ident" id="c-xLI4sunv2e" href="#c-xLI4sunv2e" tabindex="-1" role="presentation"></a><code class="language-markdown">&gt; [!NOTE]
+&gt; Este es un aviso informativo general.</code></pre>
+
+<p><a class="p_ident" id="p-x1idvykMiU_19" href="#p-x1idvykMiU_19" tabindex="-1" role="presentation"></a>Resultado:</p><div class="admonition note">
+<p><strong>Note:</strong> Este es un aviso informativo general.</p>
+</div>
+
+
+<h3><a class="i_ident" id="i-+Yjzot7ZmY" href="#i-+Yjzot7ZmY" tabindex="-1" role="presentation"></a>4.2 Warning</h3>
+
+<pre class="snippet" data-language="markdown" ><a class="c_ident" id="c-rjQSe7K0Zd" href="#c-rjQSe7K0Zd" tabindex="-1" role="presentation"></a><code class="language-markdown">&gt; [!WARNING]
+&gt; Presta atención a este punto antes de continuar.</code></pre>
+
+<p><a class="p_ident" id="p-x1idvykMiU_20" href="#p-x1idvykMiU_20" tabindex="-1" role="presentation"></a>Resultado:</p><div class="admonition warning">
+<p><strong>Warning:</strong> Presta atención a este punto antes de continuar.</p>
+</div>
+
+
+<h3><a class="i_ident" id="i-sPKY8qaKcQ" href="#i-sPKY8qaKcQ" tabindex="-1" role="presentation"></a>4.3 Tip</h3>
+
+<pre class="snippet" data-language="markdown" ><a class="c_ident" id="c-d5ik3DgVGB" href="#c-d5ik3DgVGB" tabindex="-1" role="presentation"></a><code class="language-markdown">&gt; [!TIP]
+&gt; Este consejo puede ahorrarte tiempo en la práctica.</code></pre>
+
+<p><a class="p_ident" id="p-x1idvykMiU_21" href="#p-x1idvykMiU_21" tabindex="-1" role="presentation"></a>Resultado:</p><div class="admonition tip">
+<p><strong>Tip:</strong> Este consejo puede ahorrarte tiempo en la práctica.</p>
+</div>
+
+
+<h3><a class="i_ident" id="i-QifdNP2shY" href="#i-QifdNP2shY" tabindex="-1" role="presentation"></a>4.4 Important</h3>
+
+<pre class="snippet" data-language="markdown" ><a class="c_ident" id="c-By/zu/D0wy" href="#c-By/zu/D0wy" tabindex="-1" role="presentation"></a><code class="language-markdown">&gt; [!IMPORTANT]
+&gt; Este punto es clave para que el sistema funcione correctamente.</code></pre>
+
+<p><a class="p_ident" id="p-x1idvykMiU_22" href="#p-x1idvykMiU_22" tabindex="-1" role="presentation"></a>Resultado:</p><div class="admonition important">
+<p><strong>Important:</strong> Este punto es clave para que el sistema funcione correctamente.</p>
+</div>
+
+
+<h3><a class="i_ident" id="i-N9Bt7TW4Z9" href="#i-N9Bt7TW4Z9" tabindex="-1" role="presentation"></a>4.5 Caution</h3>
+
+<pre class="snippet" data-language="markdown" ><a class="c_ident" id="c-VFMu7QxMh8" href="#c-VFMu7QxMh8" tabindex="-1" role="presentation"></a><code class="language-markdown">&gt; [!CAUTION]
+&gt; Ignorar esta etapa puede provocar la pérdida de datos.</code></pre>
+
+<p><a class="p_ident" id="p-x1idvykMiU_23" href="#p-x1idvykMiU_23" tabindex="-1" role="presentation"></a>Resultado:</p><div class="admonition caution">
+<p><strong>Caution:</strong> Ignorar esta etapa puede provocar la pérdida de datos.</p>
+</div>
+
+
+<h2><a class="h_ident" id="h-wyxdI7I72b" href="#h-wyxdI7I72b" tabindex="-1" role="presentation"></a>5. Citas y Epígrafos</h2>
+
+<p><a class="p_ident" id="p-hQYnevZ1p9" href="#p-hQYnevZ1p9" tabindex="-1" role="presentation"></a>Las citas se escriben como blockquote estándar precedido por un comentario <code>&lt;!-- quote: {…} --&gt;</code> que porta los metadatos (autor, título, opciones).</p>
+
+<h3><a class="i_ident" id="i-xKbIoviiKb" href="#i-xKbIoviiKb" tabindex="-1" role="presentation"></a>5.1 Cita con atribución</h3>
+
+<p><a class="p_ident" id="p-+a7CWXCokW" href="#p-+a7CWXCokW" tabindex="-1" role="presentation"></a>Una cita con autor y título de obra:</p>
+
+<pre class="snippet" data-language="markdown" ><a class="c_ident" id="c-f1Lw5sKPoA" href="#c-f1Lw5sKPoA" tabindex="-1" role="presentation"></a><code class="language-markdown">&lt;!-- quote: {author: &quot;George Orwell&quot;, title: &quot;1984&quot;} --&gt;
+
+&gt; La lengua corrupta corrompía el pensamiento.</code></pre>
+
+<p><a class="p_ident" id="p-x1idvykMiU_24" href="#p-x1idvykMiU_24" tabindex="-1" role="presentation"></a>Resultado:</p>
+
+<blockquote>
+
+<p><a class="p_ident" id="p-vhSm/DU5Gl" href="#p-vhSm/DU5Gl" tabindex="-1" role="presentation"></a>La lengua corrupta corrompía el pensamiento.</p>
+
+<footer>George Orwell, <cite>1984</cite></footer>
+
+</blockquote>
+
+<h3><a class="i_ident" id="i-p4h2ujDtCw" href="#i-p4h2ujDtCw" tabindex="-1" role="presentation"></a>5.2 Epigrafo de capítulo</h3>
+
+<p><a class="p_ident" id="p-ds2IPiJCHI" href="#p-ds2IPiJCHI" tabindex="-1" role="presentation"></a>Un epigrafo aparece antes del título en la versión PDF. Se añade <code>chapter: true</code> en el comentario:</p>
+
+<pre class="snippet" data-language="markdown" ><a class="c_ident" id="c-WxkNsQN1wZ" href="#c-WxkNsQN1wZ" tabindex="-1" role="presentation"></a><code class="language-markdown">&lt;!-- quote: {author: &quot;Alan Turing&quot;, title: &quot;Computing Machinery and Intelligence&quot;, chapter: true} --&gt;
+
+&gt; We may only have a short time with each other,
+&gt; but it will take eternity to forget you.</code></pre>
+
+<p><a class="p_ident" id="p-x1idvykMiU_25" href="#p-x1idvykMiU_25" tabindex="-1" role="presentation"></a>Resultado:</p>
+
+<blockquote>
+
+<p><a class="p_ident" id="p-fXOq+hPwrE" href="#p-fXOq+hPwrE" tabindex="-1" role="presentation"></a>We may only have a short time with each other, but it will take eternity to forget you.</p>
+
+<footer>Alan Turing, <cite>Computing Machinery and Intelligence</cite></footer>
+
+</blockquote>
+
+<h2><a class="h_ident" id="h-lhkoZvviBk" href="#h-lhkoZvviBk" tabindex="-1" role="presentation"></a>6. Hints (Ejercicios)</h2>
+
+<p><a class="p_ident" id="p-BAFhP+KlLe" href="#p-BAFhP+KlLe" tabindex="-1" role="presentation"></a>Los bloques de pista se renderizas como desplegables en HTML interactivo y se eliminan en PDF. Se marcan con comentarios <code>&lt;!-- hint --&gt;</code> y <code>&lt;!-- /<wbr>hint --&gt;</code>:</p>
+
+<pre class="snippet" data-language="markdown" ><a class="c_ident" id="c-k2KD1euJcC" href="#c-k2KD1euJcC" tabindex="-1" role="presentation"></a><code class="language-markdown">&lt;!-- hint --&gt;
+
+La clave está en usar un bucle `for...of` en lugar de un índice numérico.
+
+&lt;!-- /hint --&gt;</code></pre>
+
+<p><a class="p_ident" id="p-x1idvykMiU_26" href="#p-x1idvykMiU_26" tabindex="-1" role="presentation"></a>Resultado:</p>
+
+<details class="solution"><summary>Display hints...</summary><div class="solution-text">
+
+<p><a class="p_ident" id="p-iNPwn/vha3" href="#p-iNPwn/vha3" tabindex="-1" role="presentation"></a>La clave está en usar un bucle <code>for...of</code> en lugar de un índice numérico.</p>
+
+</div></details>
+
+<h2><a class="h_ident" id="h-kdV1rYbEXu" href="#h-kdV1rYbEXu" tabindex="-1" role="presentation"></a>7. Términos de Índice</h2>
+
+<p><a class="p_ident" id="p-MiX6FrKEn8" href="#p-MiX6FrKEn8" tabindex="-1" role="presentation"></a>Los términos de índice solo tienen efecto en la compilación PDF. En HTML y EPUB se ignoran.</p>
+
+<h3><a class="i_ident" id="i-7WUk6A8xs5" href="#i-7WUk6A8xs5" tabindex="-1" role="presentation"></a>7.1 Término inline</h3>
+
+<p><a class="p_ident" id="p-mMqOq+djUq" href="#p-mMqOq+djUq" tabindex="-1" role="presentation"></a>Un término inline se marca con comentarios <code>((</code> y <code>))</code> alrededor de la palabra:</p>
+
+<pre class="snippet" data-language="markdown" ><a class="c_ident" id="c-tL1reEG6HN" href="#c-tL1reEG6HN" tabindex="-1" role="presentation"></a><code class="language-markdown">El concepto de &lt;!-- index-inline --&gt;recursión&lt;!-- /index-inline --&gt; es fundamental en programación.</code></pre>
+
+<p><a class="p_ident" id="p-x1idvykMiU_27" href="#p-x1idvykMiU_27" tabindex="-1" role="presentation"></a>Resultado:</p>
+
+<p><a class="p_ident" id="p-tGonzGuLz+" href="#p-tGonzGuLz+" tabindex="-1" role="presentation"></a>El concepto de recursión es fundamental en programación.</p>
+
+<h3><a class="i_ident" id="i-fVy+Te5ptE" href="#i-fVy+Te5ptE" tabindex="-1" role="presentation"></a>7.2 Directivas de bloque</h3>
+
+<p><a class="p_ident" id="p-RkIsUTyNgg" href="#p-RkIsUTyNgg" tabindex="-1" role="presentation"></a>Se pueden añadir entradas al índice sin texto visible mediante comentarios:</p>
+
+<pre class="snippet" data-language="markdown" ><a class="c_ident" id="c-UGzW5IXW/V" href="#c-UGzW5IXW/V" tabindex="-1" role="presentation"></a><code class="language-markdown">&lt;!-- index: &quot;estructura de datos&quot; --&gt;
+&lt;!-- index: [&quot;árbol&quot;, &quot;árbol binario&quot;] --&gt;
+&lt;!-- indexsee: &quot;hash&quot;, &quot;tabla hash&quot; --&gt;</code></pre>
+
+<p><a class="p_ident" id="p-aGqkvAOXzt" href="#p-aGqkvAOXzt" tabindex="-1" role="presentation"></a>Estas directivas no producen texto visible pero generan entradas en el índice del PDF.</p>
+
+<h2><a class="h_ident" id="h-l5D2GPp7U/" href="#h-l5D2GPp7U/" tabindex="-1" role="presentation"></a>8. Bloques Condicionales</h2>
+
+<p><a class="p_ident" id="p-OoDgTwrVfz" href="#p-OoDgTwrVfz" tabindex="-1" role="presentation"></a>Los bloques condicionales permiten mostrar contenido solo en determinados formatos de salida. Se delimitan con <code>&lt;!-- if: condición --&gt;</code> y <code>&lt;!-- endif --&gt;</code>.</p>
+
+<h3><a class="i_ident" id="i-PbO767iqhD" href="#i-PbO767iqhD" tabindex="-1" role="presentation"></a>8.1 Solo en libro (EPUB/PDF)</h3>
+
+<pre class="snippet" data-language="markdown" ><a class="c_ident" id="c-MZ9appNzMk" href="#c-MZ9appNzMk" tabindex="-1" role="presentation"></a><code class="language-markdown">&lt;!-- if: book --&gt;
+
+Este párrafo solo aparece en la versión EPUB y en el PDF.
+
+&lt;!-- endif --&gt;</code></pre>
+
+<p><a class="p_ident" id="p-x1idvykMiU_28" href="#p-x1idvykMiU_28" tabindex="-1" role="presentation"></a>Resultado:</p>
+
+<h3><a class="i_ident" id="i-6F6DdDx+7p" href="#i-6F6DdDx+7p" tabindex="-1" role="presentation"></a>8.2 Solo en HTML interactivo</h3>
+
+<pre class="snippet" data-language="markdown" ><a class="c_ident" id="c-qjUMZupx3I" href="#c-qjUMZupx3I" tabindex="-1" role="presentation"></a><code class="language-markdown">&lt;!-- if: interactive --&gt;
+
+Este párrafo solo aparece cuando se compila con `make html`.
+
+&lt;!-- endif --&gt;</code></pre>
+
+<p><a class="p_ident" id="p-x1idvykMiU_29" href="#p-x1idvykMiU_29" tabindex="-1" role="presentation"></a>Resultado:</p>
+
+<p><a class="p_ident" id="p-Wlylasev5D" href="#p-Wlylasev5D" tabindex="-1" role="presentation"></a>Este párrafo solo aparece cuando se compila con <code>make html</code>.</p>
+
+<h3><a class="i_ident" id="i-M6o8yxF+Zk" href="#i-M6o8yxF+Zk" tabindex="-1" role="presentation"></a>8.3 Solo en PDF (tex)</h3>
+
+<pre class="snippet" data-language="markdown" ><a class="c_ident" id="c-c4aHAkcKZq" href="#c-c4aHAkcKZq" tabindex="-1" role="presentation"></a><code class="language-markdown">&lt;!-- if: tex --&gt;
+
+Este párrafo solo aparece en la compilación LaTeX/PDF.
+
+&lt;!-- endif --&gt;</code></pre>
+
+<p><a class="p_ident" id="p-x1idvykMiU_30" href="#p-x1idvykMiU_30" tabindex="-1" role="presentation"></a>Resultado:</p>
+
+<h2><a class="h_ident" id="h-omORhxNohk" href="#h-omORhxNohk" tabindex="-1" role="presentation"></a>9. Nombres de Teclas</h2>
+
+<p><a class="p_ident" id="p-zIXWG4ikdc" href="#p-zIXWG4ikdc" tabindex="-1" role="presentation"></a>Los nombres de teclas se escriben con la etiqueta HTML <code>&lt;kbd&gt;</code>, que GitHub renderiza con estilo de tecla física. El script los convierte a <code>[texto]{keyname}</code>.</p>
+
+<pre class="snippet" data-language="markdown" ><a class="c_ident" id="c-d6FbrZW7Ak" href="#c-d6FbrZW7Ak" tabindex="-1" role="presentation"></a><code class="language-markdown">Guarda el archivo con &lt;kbd&gt;Ctrl+S&lt;/kbd&gt; o abre el menú con &lt;kbd&gt;Alt+F&lt;/kbd&gt;.</code></pre>
+
+<p><a class="p_ident" id="p-x1idvykMiU_31" href="#p-x1idvykMiU_31" tabindex="-1" role="presentation"></a>Resultado:</p>
+
+<p><a class="p_ident" id="p-wAwSkFlywX" href="#p-wAwSkFlywX" tabindex="-1" role="presentation"></a>Guarda el archivo con <span class="keyname">Ctrl+S</span> o abre el menú con <span class="keyname">Alt+F</span>.</p>
+
+<p><a class="p_ident" id="p-XWKdo7EW7v" href="#p-XWKdo7EW7v" tabindex="-1" role="presentation"></a>Otros ejemplos: <span class="keyname">Enter</span>, <span class="keyname">Escape</span>, <span class="keyname">Tab</span>.</p>
+
+<h2><a class="h_ident" id="h-y58YvG5ba6" href="#h-y58YvG5ba6" tabindex="-1" role="presentation"></a>10. Sub y Superíndices</h2>
+
+<p><a class="p_ident" id="p-Zx+u/qcJ67" href="#p-Zx+u/qcJ67" tabindex="-1" role="presentation"></a>Se usan las etiquetas HTML <code>&lt;sub&gt;</code> y <code>&lt;sup&gt;</code> que GitHub renderiza directamente. El script las convierte a <code>~…~</code> y <code>^…^</code>.</p>
+
+<h3><a class="i_ident" id="i-WMNVGFE67V" href="#i-WMNVGFE67V" tabindex="-1" role="presentation"></a>10.1 Subíndice</h3>
+
+<pre class="snippet" data-language="markdown" ><a class="c_ident" id="c-UBWEgrR94F" href="#c-UBWEgrR94F" tabindex="-1" role="presentation"></a><code class="language-markdown">H&lt;sub&gt;2&lt;/sub&gt;O es la fórmula del agua.</code></pre>
+
+<p><a class="p_ident" id="p-x1idvykMiU_32" href="#p-x1idvykMiU_32" tabindex="-1" role="presentation"></a>Resultado:</p>
+
+<p><a class="p_ident" id="p-ry6M20GdQP" href="#p-ry6M20GdQP" tabindex="-1" role="presentation"></a>H<sub>2</sub>O es la fórmula del agua.</p>
+
+<h3><a class="i_ident" id="i-PBsVZfAgu6" href="#i-PBsVZfAgu6" tabindex="-1" role="presentation"></a>10.2 Superíndice</h3>
+
+<pre class="snippet" data-language="markdown" ><a class="c_ident" id="c-jlhSuIR0ay" href="#c-jlhSuIR0ay" tabindex="-1" role="presentation"></a><code class="language-markdown">La complejidad es O(n&lt;sup&gt;2&lt;/sup&gt;) en el peor caso.</code></pre>
+
+<p><a class="p_ident" id="p-x1idvykMiU_33" href="#p-x1idvykMiU_33" tabindex="-1" role="presentation"></a>Resultado:</p>
+
+<p><a class="p_ident" id="p-PU1WswE6Ft" href="#p-PU1WswE6Ft" tabindex="-1" role="presentation"></a>La complejidad es O(n<sup>2</sup>) en el peor caso.</p>
+
+<h3><a class="i_ident" id="i-uJqhyoMMZL" href="#i-uJqhyoMMZL" tabindex="-1" role="presentation"></a>10.3 Combinado</h3>
+
+<p><a class="p_ident" id="p-Nl9nanxXI8" href="#p-Nl9nanxXI8" tabindex="-1" role="presentation"></a>Se puede combinar sub y superíndice en la misma expresión:</p>
+
+<pre class="snippet" data-language="markdown" ><a class="c_ident" id="c-ZiADQjTa4Z" href="#c-ZiADQjTa4Z" tabindex="-1" role="presentation"></a><code class="language-markdown">La fórmula general es x&lt;sub&gt;i&lt;/sub&gt;&lt;sup&gt;2&lt;/sup&gt; + y&lt;sub&gt;j&lt;/sub&gt;&lt;sup&gt;3&lt;/sup&gt;.</code></pre>
+
+<p><a class="p_ident" id="p-x1idvykMiU_34" href="#p-x1idvykMiU_34" tabindex="-1" role="presentation"></a>Resultado:</p>
+
+<p><a class="p_ident" id="p-iKdBQMfl+G" href="#p-iKdBQMfl+G" tabindex="-1" role="presentation"></a>La fórmula general es x<sub>i</sub><sup>2</sup> + y<sub>j</sub><sup>3</sup>.</p>
+
+<h2><a class="h_ident" id="h-JnL8yM/xcq" href="#h-JnL8yM/xcq" tabindex="-1" role="presentation"></a>11. enlaces Internos</h2>
+
+<p><a class="p_ident" id="p-4e1qpaG85T" href="#p-4e1qpaG85T" tabindex="-1" role="presentation"></a>Los enlaces internos se escriben con la sintaxis estándar de Markdown. Si tienes un archivo <code>01_valores.md</code>, puedes enlazarlo así:</p>
+
+<pre class="snippet" data-language="markdown" ><a class="c_ident" id="c-DzUiIaY+H5" href="#c-DzUiIaY+H5" tabindex="-1" role="presentation"></a><code class="language-markdown">[el capítulo de valores](valores)</code></pre>
+
+<p><a class="p_ident" id="p-zJ+jtGvv/F" href="#p-zJ+jtGvv/F" tabindex="-1" role="presentation"></a>El sistema busca el archivo que termine en <code>_valores.md</code> y genera el enlace correcto (<code>.html</code> en HTML, <code>.xhtml</code> en EPUB).</p>
+
+<h2><a class="h_ident" id="h-iEM+A8BfLX" href="#h-iEM+A8BfLX" tabindex="-1" role="presentation"></a>12. Bloques Ocultos e IDs</h2>
+
+<h3><a class="i_ident" id="i-hKoGay0oEX" href="#i-hKoGay0oEX" tabindex="-1" role="presentation"></a>12.1 Bloques de código ocultos</h3>
+
+<p><a class="p_ident" id="p-ZJYmLRHf2i" href="#p-ZJYmLRHf2i" tabindex="-1" role="presentation"></a>La opción <code>hidden: true</code> oculta un bloque de código en el output. Útil para setup previo a un ejercicio. Se indica con un comentario <code>&lt;!-- code-options: {…} --&gt;</code> antes del bloque:</p>
+
+<pre class="snippet" data-language="markdown" ><a class="c_ident" id="c-LyuiIrJPBC" href="#c-LyuiIrJPBC" tabindex="-1" role="presentation"></a><code class="language-markdown">&lt;!-- code-options: {hidden: true} --&gt;
+
+```js
+// Este bloque no se ve al renderizar
+let estado = { valor: 0 };
+```</code></pre>
+
+<h3><a class="i_ident" id="i-ECUfQjAvKS" href="#i-ECUfQjAvKS" tabindex="-1" role="presentation"></a>12.2 IDs manuales</h3>
+
+<p><a class="p_ident" id="p-P18icI1apV" href="#p-P18icI1apV" tabindex="-1" role="presentation"></a>La directiva de ID se indica con un comentario <code>&lt;!-- id: &quot;identificador&quot; --&gt;</code> inmediatamente antes del heading:</p>
+
+<pre class="snippet" data-language="markdown" ><a class="c_ident" id="c-fd2cKgvz6v" href="#c-fd2cKgvz6v" tabindex="-1" role="presentation"></a><code class="language-markdown">&lt;!-- id: &quot;seccion-importante&quot; --&gt;
+
+## Esta sección tiene un id custom</code></pre>
+
+<p><a class="p_ident" id="p-1cAGVycZIy" href="#p-1cAGVycZIy" tabindex="-1" role="presentation"></a>Esto permite crear enlaces precisos hacia esa sección desde otro lugar:</p>
+
+<pre class="snippet" data-language="markdown" ><a class="c_ident" id="c-nRWibOmK12" href="#c-nRWibOmK12" tabindex="-1" role="presentation"></a><code class="language-markdown">[ir a la sección importante](#seccion-importante)</code></pre>
+
+<h2><a class="h_ident" id="h-ILP36aGOGM" href="#h-ILP36aGOGM" tabindex="-1" role="presentation"></a>13. Elementos Estándar de Markdown</h2>
+
+<p><a class="p_ident" id="p-r+MxQPQHvV" href="#p-r+MxQPQHvV" tabindex="-1" role="presentation"></a>Esta sección cubre los elementos de formato básicos de GitHub Flavored Markdown. El script <code>convert_gfm.mjs</code> los pasa sin modificar al renderizador <code>markdown-it</code>, que los convierte a HTML/LaTeX nativamente. El objetivo es verificar que todos estos formatos se conservan correctamente a través de la cadena de conversión.</p>
+
+<h3><a class="i_ident" id="i-VP92ctdth0" href="#i-VP92ctdth0" tabindex="-1" role="presentation"></a>13.1 Negrita</h3>
+
+<p><a class="p_ident" id="p-yQASvi0IWo" href="#p-yQASvi0IWo" tabindex="-1" role="presentation"></a>Se delimita con doble asterisco <code>**…**</code> o doble guión bajo <code>__…__</code>:</p>
+
+<pre class="snippet" data-language="markdown" ><a class="c_ident" id="c-v00oAHQbhV" href="#c-v00oAHQbhV" tabindex="-1" role="presentation"></a><code class="language-markdown">Este texto tiene palabras en **negrita** y otras en **también negrita**.</code></pre>
+
+<p><a class="p_ident" id="p-x1idvykMiU_35" href="#p-x1idvykMiU_35" tabindex="-1" role="presentation"></a>Resultado:</p>
+
+<p><a class="p_ident" id="p-Wzq80lijC+" href="#p-Wzq80lijC+" tabindex="-1" role="presentation"></a>Este texto tiene palabras en <strong>negrita</strong> y otras en <strong>también negrita</strong>.</p>
+
+<h3><a class="i_ident" id="i-sNTzXCX1gR" href="#i-sNTzXCX1gR" tabindex="-1" role="presentation"></a>13.2 Cursiva (itálica)</h3>
+
+<p><a class="p_ident" id="p-yQASvi0IWo_1" href="#p-yQASvi0IWo_1" tabindex="-1" role="presentation"></a>Se delimita con un solo asterisco <code>*…*</code> o un solo guión bajo <code>_…_</code>:</p>
+
+<pre class="snippet" data-language="markdown" ><a class="c_ident" id="c-JOY8JToYmT" href="#c-JOY8JToYmT" tabindex="-1" role="presentation"></a><code class="language-markdown">Este texto tiene palabras en _cursiva_ y otras en _también cursiva_.</code></pre>
+
+<p><a class="p_ident" id="p-x1idvykMiU_36" href="#p-x1idvykMiU_36" tabindex="-1" role="presentation"></a>Resultado:</p>
+
+<p><a class="p_ident" id="p-BF3KkDAf2y" href="#p-BF3KkDAf2y" tabindex="-1" role="presentation"></a>Este texto tiene palabras en <em>cursiva</em> y otras en <em>también cursiva</em>.</p>
+
+<h3><a class="i_ident" id="i-QOb7Q91sFy" href="#i-QOb7Q91sFy" tabindex="-1" role="presentation"></a>13.3 Negrita y cursiva combinadas</h3>
+
+<p><a class="p_ident" id="p-wpkSzyZPXe" href="#p-wpkSzyZPXe" tabindex="-1" role="presentation"></a>Se combinan tres asteriscos <code>***…***</code>:</p>
+
+<pre class="snippet" data-language="markdown" ><a class="c_ident" id="c-t8BfmTO2/Q" href="#c-t8BfmTO2/Q" tabindex="-1" role="presentation"></a><code class="language-markdown">Este texto es **_negrita y cursiva al mismo tiempo_**.</code></pre>
+
+<p><a class="p_ident" id="p-x1idvykMiU_37" href="#p-x1idvykMiU_37" tabindex="-1" role="presentation"></a>Resultado:</p>
+
+<p><a class="p_ident" id="p-5DmLkLpgFx" href="#p-5DmLkLpgFx" tabindex="-1" role="presentation"></a>Este texto es <strong><em>negrita y cursiva al mismo tiempo</em></strong>.</p>
+
+<h3><a class="i_ident" id="i-T7CRewvfD+" href="#i-T7CRewvfD+" tabindex="-1" role="presentation"></a>13.4 Tachado (strikethrough)</h3>
+
+<p><a class="p_ident" id="p-IqCetdgMkD" href="#p-IqCetdgMkD" tabindex="-1" role="presentation"></a>Se delimita con doble tilde <code>~~…~~</code> (extensión GFM):</p>
+
+<pre class="snippet" data-language="markdown" ><a class="c_ident" id="c-JoqiDK0dil" href="#c-JoqiDK0dil" tabindex="-1" role="presentation"></a><code class="language-markdown">Esta palabra está ~~tachada~~ en el texto.</code></pre>
+
+<p><a class="p_ident" id="p-x1idvykMiU_38" href="#p-x1idvykMiU_38" tabindex="-1" role="presentation"></a>Resultado:</p>
+
+<p><a class="p_ident" id="p-lFUgLiak6n" href="#p-lFUgLiak6n" tabindex="-1" role="presentation"></a>Esta palabra está <del>tachada</del> en el texto.</p>
+
+<h3><a class="i_ident" id="i-4YIlZxEt8Z" href="#i-4YIlZxEt8Z" tabindex="-1" role="presentation"></a>13.5 Listas no ordenadas</h3>
+
+<p><a class="p_ident" id="p-Q4YHc+aalo" href="#p-Q4YHc+aalo" tabindex="-1" role="presentation"></a>Se crean con <code>-</code>, <code>*</code> o <code>+</code> al inicio de cada línea:</p>
+
+<pre class="snippet" data-language="markdown" ><a class="c_ident" id="c-lotgjUJu8p" href="#c-lotgjUJu8p" tabindex="-1" role="presentation"></a><code class="language-markdown">- Elemento uno
+- Elemento dos
+- Elemento tres</code></pre>
+
+<p><a class="p_ident" id="p-x1idvykMiU_39" href="#p-x1idvykMiU_39" tabindex="-1" role="presentation"></a>Resultado:</p>
+
+<ul>
+
+<li>
+
+<p><a class="p_ident" id="p-cgfr1ObDvs" href="#p-cgfr1ObDvs" tabindex="-1" role="presentation"></a>Elemento uno</p></li>
+
+<li>
+
+<p><a class="p_ident" id="p-9mfm/HcGD4" href="#p-9mfm/HcGD4" tabindex="-1" role="presentation"></a>Elemento dos</p></li>
+
+<li>
+
+<p><a class="p_ident" id="p-0x3owvLa1b" href="#p-0x3owvLa1b" tabindex="-1" role="presentation"></a>Elemento tres</p></li></ul>
+
+<h3><a class="i_ident" id="i-0m3az7QDBM" href="#i-0m3az7QDBM" tabindex="-1" role="presentation"></a>13.6 Listas ordenadas (numeradas)</h3>
+
+<p><a class="p_ident" id="p-BLeMZGMxpW" href="#p-BLeMZGMxpW" tabindex="-1" role="presentation"></a>Se crean con un número seguido de punto <code>N.</code>:</p>
+
+<pre class="snippet" data-language="markdown" ><a class="c_ident" id="c-lXA9nX4HXu" href="#c-lXA9nX4HXu" tabindex="-1" role="presentation"></a><code class="language-markdown">1. Primer paso
+2. Segundo paso
+3. Tercer paso</code></pre>
+
+<p><a class="p_ident" id="p-x1idvykMiU_40" href="#p-x1idvykMiU_40" tabindex="-1" role="presentation"></a>Resultado:</p>
+
+<ol>
+
+<li>
+
+<p><a class="p_ident" id="p-1bI3RjCRTv" href="#p-1bI3RjCRTv" tabindex="-1" role="presentation"></a>Primer paso</p></li>
+
+<li>
+
+<p><a class="p_ident" id="p-WrUSqKtGPe" href="#p-WrUSqKtGPe" tabindex="-1" role="presentation"></a>Segundo paso</p></li>
+
+<li>
+
+<p><a class="p_ident" id="p-22Osp3EBb6" href="#p-22Osp3EBb6" tabindex="-1" role="presentation"></a>Tercer paso</p></li>
+
+</ol>
+
+<h3><a class="i_ident" id="i-5WNnZLyziH" href="#i-5WNnZLyziH" tabindex="-1" role="presentation"></a>13.7 Listas anidadas</h3>
+
+<p><a class="p_ident" id="p-JlQywHCzpk" href="#p-JlQywHCzpk" tabindex="-1" role="presentation"></a>Se crean indentando los elementos hijos con 2-4 espacios. Se puede mezclar listas ordenadas y no ordenadas:</p>
+
+<pre class="snippet" data-language="markdown" ><a class="c_ident" id="c-geoC70bgPC" href="#c-geoC70bgPC" tabindex="-1" role="presentation"></a><code class="language-markdown">- Categoría A
+  - Subcategoría A1
+  - Subcategoría A2
+- Categoría B
+  1. Paso B1
+  2. Paso B2</code></pre>
+
+<p><a class="p_ident" id="p-x1idvykMiU_41" href="#p-x1idvykMiU_41" tabindex="-1" role="presentation"></a>Resultado:</p>
+
+<ul>
+
+<li>
+
+<p><a class="p_ident" id="p-RjZJ6GPAMq" href="#p-RjZJ6GPAMq" tabindex="-1" role="presentation"></a>Categoría A</p>
+
+<ul>
+
+<li>
+
+<p><a class="p_ident" id="p-IJS4V3PcE3" href="#p-IJS4V3PcE3" tabindex="-1" role="presentation"></a>Subcategoría A1</p></li>
+
+<li>
+
+<p><a class="p_ident" id="p-OJDWNQOjOG" href="#p-OJDWNQOjOG" tabindex="-1" role="presentation"></a>Subcategoría A2</p></li></ul></li>
+
+<li>
+
+<p><a class="p_ident" id="p-uW1XyAwWLR" href="#p-uW1XyAwWLR" tabindex="-1" role="presentation"></a>Categoría B</p>
+
+<ol>
+
+<li>
+
+<p><a class="p_ident" id="p-/OyZxJYROs" href="#p-/OyZxJYROs" tabindex="-1" role="presentation"></a>Paso B1</p></li>
+
+<li>
+
+<p><a class="p_ident" id="p-T0ZTchjZJm" href="#p-T0ZTchjZJm" tabindex="-1" role="presentation"></a>Paso B2</p></li>
+
+</ol></li></ul>
+
+<h3><a class="i_ident" id="i-OgJtly8dz7" href="#i-OgJtly8dz7" tabindex="-1" role="presentation"></a>13.8 Blockquote estándar</h3>
+
+<p><a class="p_ident" id="p-oC6Qmj/T8/" href="#p-oC6Qmj/T8/" tabindex="-1" role="presentation"></a>Un blockquote sencillo se crea con <code>&gt;</code> al inicio de cada línea. Se diferencia de las admoniciones (sección 4) en que no tiene <code>[!TIPO]</code> y de las citas con atribución (sección 5) en que no tiene <code>&lt;!-- quote --&gt;</code>:</p>
+
+<pre class="snippet" data-language="markdown" ><a class="c_ident" id="c-BD54AXK+0e" href="#c-BD54AXK+0e" tabindex="-1" role="presentation"></a><code class="language-markdown">&gt; Esta es una cita estándar sin atribución.
+&gt; Puede ocupar varias líneas consecutivas.</code></pre>
+
+<p><a class="p_ident" id="p-x1idvykMiU_42" href="#p-x1idvykMiU_42" tabindex="-1" role="presentation"></a>Resultado:</p>
+
+<blockquote>
+
+<p><a class="p_ident" id="p-n+op53opAm" href="#p-n+op53opAm" tabindex="-1" role="presentation"></a>Esta es una cita estándar sin atribución. Puede ocupar varias líneas consecutivas.</p>
+
+</blockquote>
+
+<h3><a class="i_ident" id="i-0XRvoGeEOE" href="#i-0XRvoGeEOE" tabindex="-1" role="presentation"></a>13.9 Regla horizontal</h3>
+
+<p><a class="p_ident" id="p-pIzQXsslBP" href="#p-pIzQXsslBP" tabindex="-1" role="presentation"></a>Se crea con tres o más guiones <code>---</code>, asteriscos <code>***</code> o guiones bajos <code>___</code>. Debe estar separada por líneas en blanco para no interpretarse como subheading (setext):</p>
+
+<pre class="snippet" data-language="markdown" ><a class="c_ident" id="c-8DBzlbIgR/" href="#c-8DBzlbIgR/" tabindex="-1" role="presentation"></a><code class="language-markdown">Párrafo antes de la regla.
+
+---
+
+Párrafo después de la regla.</code></pre>
+
+<p><a class="p_ident" id="p-x1idvykMiU_43" href="#p-x1idvykMiU_43" tabindex="-1" role="presentation"></a>Resultado:</p>
+
+<p><a class="p_ident" id="p-iIq+ZHXbLR" href="#p-iIq+ZHXbLR" tabindex="-1" role="presentation"></a>Párrafo antes de la regla.</p>
+
+<hr>
+
+<p><a class="p_ident" id="p-w7nXULTZJ8" href="#p-w7nXULTZJ8" tabindex="-1" role="presentation"></a>Párrafo después de la regla.</p>
+
+<h3><a class="i_ident" id="i-vVrFuAZn/I" href="#i-vVrFuAZn/I" tabindex="-1" role="presentation"></a>13.10 Código inline con backticks</h3>
+
+<p><a class="p_ident" id="p-TUnKaUR5DI" href="#p-TUnKaUR5DI" tabindex="-1" role="presentation"></a>Se encierra entre un par de backticks <code>`…`</code>:</p>
+
+<pre class="snippet" data-language="markdown" ><a class="c_ident" id="c-dw2oO1yQwA" href="#c-dw2oO1yQwA" tabindex="-1" role="presentation"></a><code class="language-markdown">Para declarar una variable se usa `const` o `let` en JavaScript.</code></pre>
+
+<p><a class="p_ident" id="p-x1idvykMiU_44" href="#p-x1idvykMiU_44" tabindex="-1" role="presentation"></a>Resultado:</p>
+
+<p><a class="p_ident" id="p-x66A95e6pv" href="#p-x66A95e6pv" tabindex="-1" role="presentation"></a>Para declarar una variable se usa <code>const</code> o <code>let</code> en JavaScript.</p>
+
+<h3><a class="i_ident" id="i-xddoambZsC" href="#i-xddoambZsC" tabindex="-1" role="presentation"></a>13.11 Bloque de código indentado</h3>
+
+<p><a class="p_ident" id="p-extyisW6de" href="#p-extyisW6de" tabindex="-1" role="presentation"></a>Cuatro espacios o un tab al inicio de cada línea producen un bloque de código sin highlight, equivalente a un bloque fenced sin identificador de lenguaje:</p>
+
+<pre class="snippet" data-language="markdown" ><a class="c_ident" id="c-t9E6QdRAhX" href="#c-t9E6QdRAhX" tabindex="-1" role="presentation"></a><code class="language-markdown">    function hola() {
+        return &quot;Hola mundo&quot;;
+    }</code></pre>
+
+<p><a class="p_ident" id="p-x1idvykMiU_45" href="#p-x1idvykMiU_45" tabindex="-1" role="presentation"></a>Resultado:</p>
+
+<pre class="snippet"><code>function hola() {
+    return &quot;Hola mundo&quot;;
+}</code></pre>
+
+<p><a class="p_ident" id="p-2XlxAC3P6e" href="#p-2XlxAC3P6e" tabindex="-1" role="presentation"></a><strong>Nota:</strong> Una indentación menor de 4 espacios (1-3 espacios) no se conserva en el output renderizado: Markdown la colapsa y trata la línea como párrafo normal. Para márgenes visuales se recomienda usar blockquote (<code>&gt;</code>) o un bloque de código.</p>
+
+<h3><a class="i_ident" id="i-rfzWZp8N9E" href="#i-rfzWZp8N9E" tabindex="-1" role="presentation"></a>13.12 enlaces externos</h3>
+
+<p><a class="p_ident" id="p-QfC5y9cTUk" href="#p-QfC5y9cTUk" tabindex="-1" role="presentation"></a>Se crean con la sintaxis estándar <code>[texto visible](URL)</code>:</p>
+
+<pre class="snippet" data-language="markdown" ><a class="c_ident" id="c-HezgYl2buE" href="#c-HezgYl2buE" tabindex="-1" role="presentation"></a><code class="language-markdown">El proyecto se documenta en [GitHub](https://github.com).</code></pre>
+
+<p><a class="p_ident" id="p-x1idvykMiU_46" href="#p-x1idvykMiU_46" tabindex="-1" role="presentation"></a>Resultado:</p>
+
+<p><a class="p_ident" id="p-rkC3yO+DFV" href="#p-rkC3yO+DFV" tabindex="-1" role="presentation"></a>El proyecto se documenta en <a href="https://github.com" target="_blank" rel="noopener noreferrer">GitHub</a>.</p>
+
+<h2><a class="h_ident" id="h-4ShDHtdoQx" href="#h-4ShDHtdoQx" tabindex="-1" role="presentation"></a>14. Quiz — Conceptos de JavaScript</h2>
+
+<p><a class="p_ident" id="p-oJszNV4IrM" href="#p-oJszNV4IrM" tabindex="-1" role="presentation"></a>Cada pregunta es una lista de opciones con casillas de verificación. Marca las respuestas que consideras correctas y pulsa <strong>Check answers</strong> para comprobar.</p>
+
+<p><a class="p_ident" id="p-fTfBgEBGgo" href="#p-fTfBgEBGgo" tabindex="-1" role="presentation"></a>Puedes crear un quiz usando como ejemplo este markdown:</p>
+
+<pre class="snippet" data-language="markdown" ><a class="c_ident" id="c-j17l1X5qn4" href="#c-j17l1X5qn4" tabindex="-1" role="presentation"></a><code class="language-markdown">¿Cuáles de los siguientes son tipos de datos primitivos en JavaScript?
+
+- [x] `string`
+- [x] `number`
+- [ ] `array`
+- [x] `boolean`
+- [ ] `object`
+- [x] `undefined`</code></pre>
+
+<h3><a class="i_ident" id="i-uNNTMfo5GP" href="#i-uNNTMfo5GP" tabindex="-1" role="presentation"></a>14.1 Tipos de datos</h3>
+
+<p><a class="p_ident" id="p-O4cJ92/B8v" href="#p-O4cJ92/B8v" tabindex="-1" role="presentation"></a>¿Cuáles de los siguientes son tipos de datos primitivos en JavaScript?</p>
+
+<ul>
+
+<li>
+
+<p><a class="p_ident" id="p-2jmj7l5rSw" href="#p-2jmj7l5rSw" tabindex="-1" role="presentation"></a><input type="checkbox" class="quiz-input" data-correct> <code>string</code></p></li>
+
+<li>
+
+<p><a class="p_ident" id="p-2jmj7l5rSw_1" href="#p-2jmj7l5rSw_1" tabindex="-1" role="presentation"></a><input type="checkbox" class="quiz-input" data-correct> <code>number</code></p></li>
+
+<li>
+
+<p><a class="p_ident" id="p-2jmj7l5rSw_2" href="#p-2jmj7l5rSw_2" tabindex="-1" role="presentation"></a><input type="checkbox" class="quiz-input"> <code>array</code></p></li>
+
+<li>
+
+<p><a class="p_ident" id="p-2jmj7l5rSw_3" href="#p-2jmj7l5rSw_3" tabindex="-1" role="presentation"></a><input type="checkbox" class="quiz-input" data-correct> <code>boolean</code></p></li>
+
+<li>
+
+<p><a class="p_ident" id="p-2jmj7l5rSw_4" href="#p-2jmj7l5rSw_4" tabindex="-1" role="presentation"></a><input type="checkbox" class="quiz-input"> <code>object</code></p></li>
+
+<li>
+
+<p><a class="p_ident" id="p-2jmj7l5rSw_5" href="#p-2jmj7l5rSw_5" tabindex="-1" role="presentation"></a><input type="checkbox" class="quiz-input" data-correct> <code>undefined</code></p></li></ul>
+
+<h3><a class="i_ident" id="i-1Lqmi7bp7h" href="#i-1Lqmi7bp7h" tabindex="-1" role="presentation"></a>14.2 Declaración de variables</h3>
+
+<p><a class="p_ident" id="p-XHg3puYflj" href="#p-XHg3puYflj" tabindex="-1" role="presentation"></a>¿Qué palabras clave se utilizan para declarar variables en JavaScript moderno?</p>
+
+<ul>
+
+<li>
+
+<p><a class="p_ident" id="p-2jmj7l5rSw_6" href="#p-2jmj7l5rSw_6" tabindex="-1" role="presentation"></a><input type="checkbox" class="quiz-input" data-correct> <code>let</code></p></li>
+
+<li>
+
+<p><a class="p_ident" id="p-2jmj7l5rSw_7" href="#p-2jmj7l5rSw_7" tabindex="-1" role="presentation"></a><input type="checkbox" class="quiz-input" data-correct> <code>const</code></p></li>
+
+<li>
+
+<p><a class="p_ident" id="p-2jmj7l5rSw_8" href="#p-2jmj7l5rSw_8" tabindex="-1" role="presentation"></a><input type="checkbox" class="quiz-input"> <code>define</code></p></li>
+
+<li>
+
+<p><a class="p_ident" id="p-2jmj7l5rSw_9" href="#p-2jmj7l5rSw_9" tabindex="-1" role="presentation"></a><input type="checkbox" class="quiz-input"> <code>dim</code></p></li>
+
+<li>
+
+<p><a class="p_ident" id="p-2jmj7l5rSw_10" href="#p-2jmj7l5rSw_10" tabindex="-1" role="presentation"></a><input type="checkbox" class="quiz-input" data-correct> <code>var</code></p></li></ul>
+
+<h2><a class="h_ident" id="h-7AaNTM5fZi" href="#h-7AaNTM5fZi" tabindex="-1" role="presentation"></a>15. Quiz — Buenas prácticas de desarrollo</h2>
+
+<h3><a class="i_ident" id="i-EYsYiWOD1t" href="#i-EYsYiWOD1t" tabindex="-1" role="presentation"></a>15.1 Versionado</h3>
+
+<p><a class="p_ident" id="p-RwxZXmRwwi" href="#p-RwxZXmRwwi" tabindex="-1" role="presentation"></a>¿Qué herramientas o conceptos pertenecen al control de versiones?</p>
+
+<ul>
+
+<li>
+
+<p><a class="p_ident" id="p-2jmj7l5rSw_11" href="#p-2jmj7l5rSw_11" tabindex="-1" role="presentation"></a><input type="checkbox" class="quiz-input" data-correct> <code>git commit</code></p></li>
+
+<li>
+
+<p><a class="p_ident" id="p-2jmj7l5rSw_12" href="#p-2jmj7l5rSw_12" tabindex="-1" role="presentation"></a><input type="checkbox" class="quiz-input"> <code>npm start</code></p></li>
+
+<li>
+
+<p><a class="p_ident" id="p-2jmj7l5rSw_13" href="#p-2jmj7l5rSw_13" tabindex="-1" role="presentation"></a><input type="checkbox" class="quiz-input" data-correct> <code>branch</code></p></li>
+
+<li>
+
+<p><a class="p_ident" id="p-2jmj7l5rSw_14" href="#p-2jmj7l5rSw_14" tabindex="-1" role="presentation"></a><input type="checkbox" class="quiz-input" data-correct> <code>merge</code></p></li>
+
+<li>
+
+<p><a class="p_ident" id="p-2jmj7l5rSw_15" href="#p-2jmj7l5rSw_15" tabindex="-1" role="presentation"></a><input type="checkbox" class="quiz-input"> <code>transpile</code></p></li></ul>
+
+<h3><a class="i_ident" id="i-T5Tda/NzXD" href="#i-T5Tda/NzXD" tabindex="-1" role="presentation"></a>15.2 Pruebas de código</h3>
+
+<p><a class="p_ident" id="p-vMrlb1UV7W" href="#p-vMrlb1UV7W" tabindex="-1" role="presentation"></a>¿Cuáles de las siguientes afirmaciones sobre las pruebas son correctas?</p>
+
+<ul>
+
+<li>
+
+<p><a class="p_ident" id="p-FEcYJqGUrY" href="#p-FEcYJqGUrY" tabindex="-1" role="presentation"></a><input type="checkbox" class="quiz-input" data-correct> Las pruebas unitarias verifican funciones individuales</p></li>
+
+<li>
+
+<p><a class="p_ident" id="p-u9z0VUQ9E1" href="#p-u9z0VUQ9E1" tabindex="-1" role="presentation"></a><input type="checkbox" class="quiz-input"> Las pruebas reemplazan la revisión manual del código</p></li>
+
+<li>
+
+<p><a class="p_ident" id="p-DwZt5C4VgN" href="#p-DwZt5C4VgN" tabindex="-1" role="presentation"></a><input type="checkbox" class="quiz-input" data-correct> Es recomendable escribir pruebas antes del código (TDD)</p></li>
+
+<li>
+
+<p><a class="p_ident" id="p-i/Th2b3LbP" href="#p-i/Th2b3LbP" tabindex="-1" role="presentation"></a><input type="checkbox" class="quiz-input" data-correct> Los tests de integración verifican la interacción entre componentes</p></li>
+
+<li>
+
+<p><a class="p_ident" id="p-8Vp9AP9iJ3" href="#p-8Vp9AP9iJ3" tabindex="-1" role="presentation"></a><input type="checkbox" class="quiz-input"> Solo es necesario testear el código de producción</p></li></ul><nav><a href="index.html" title="cover" aria-label="cover">●</a>&nbsp;<button class=help title="help" aria-label="help"><strong>?</strong></button>
+</nav>
+</article>
+
+<script src="ejs.js"></script>

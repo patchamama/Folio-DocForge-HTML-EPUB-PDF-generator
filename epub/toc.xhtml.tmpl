@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en-US">
+  <head>
+    <title>Content</title>
+    <link rel="stylesheet" href="style.css" type="text/css"/>
+    <style>
+      nav#toc { display: none; }
+
+      ul.toc {
+        list-style: none;
+        margin: 1em 0;
+        padding: 0;
+      }
+      ul.toc li {
+        margin: 0.25em 0;
+        font-size: 95%;
+      }
+      ul.toc ul {
+        list-style: none;
+        margin: 0.2em 0 0;
+        padding: 0 0 0 1.5em;
+      }
+      ul.toc ul li {
+        font-size: 90%;
+        color: #333;
+      }
+      ul.toc a {
+        color: inherit;
+        text-decoration: none;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>Content</h1>
+
+    <!-- user-visible TOC -->
+    <ul class="toc">
+{{chapters_toc}}
+    </ul>
+
+    <!-- machine-readable TOC -->
+    <nav xmlns:epub="http://www.idpf.org/2007/ops" epub:type="toc" id="toc">
+      <ol>
+{{full_toc}}
+      </ol>
+    </nav>
+  </body>
+</html>

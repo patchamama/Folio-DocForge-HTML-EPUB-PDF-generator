@@ -1,0 +1,169 @@
+/* pandoc.css — overrides for pandoc-generated PDF / EPUB output.
+   Normalises blockquote and code-block font sizes that pandoc
+   can inflate when converting from the interactive HTML. */
+
+/* ── Headings: override Cinzel font, use Charter (same as body and LaTeX PDF) ── */
+h1, h2, h3 {
+  font-family: 'Bitstream Charter', Georgia, serif;
+  text-transform: none;
+  letter-spacing: normal;
+  word-spacing: normal;
+}
+
+/* ── Page break before each chapter (h1) ── */
+@media print {
+  h1 {
+    page-break-before: always;
+    break-before: page;
+  }
+}
+
+/* ── Pandoc TOC (both PDF and EPUB) ── */
+/* HTML output uses id="TOC", EPUB nav uses id="toc" */
+nav#TOC, nav#toc {
+  text-align: left;
+}
+
+nav#TOC a, nav#toc a {
+  color: black !important;
+}
+
+nav#TOC h1, nav#TOC h2, nav#toc h1, nav#toc h2 {
+  margin-bottom: 1em;
+}
+
+nav#TOC ul, nav#TOC ol, nav#toc ul, nav#toc ol {
+  list-style: none !important;
+  padding-left: 1.5em;
+  margin: 0.25em 0;
+}
+
+/* Root TOC list: no indent */
+nav#TOC > ul, nav#toc > ul {
+  padding-left: 0;
+}
+
+/* PDF only: TOC on its own page(s) */
+@media print {
+  nav#TOC {
+    page-break-after: always;
+  }
+}
+
+/* ── Links: yellow highlight + underline ── */
+a {
+  background-color: #fffde7;
+  text-decoration: underline;
+  color: #1a5276;
+}
+nav#TOC a, nav#toc a {
+  background-color: transparent;
+  text-decoration: none;
+  color: black;
+}
+
+blockquote {
+  font-size: 1em;
+  margin: 0 0 0 2em;
+}
+
+blockquote p {
+  font-size: 1em;
+}
+
+pre, pre code, code {
+  font-size: 0.9em;
+}
+
+pre {
+  margin: 0.8em 0;
+  padding: 0.4em 0.6em;
+  background: #f0f0f0;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+}
+
+/* ── Images: preserve natural size, never stretch beyond page width ── */
+/* display:table makes figure shrink-wrap its content instead of going full-width */
+figure {
+  display: table !important;
+  max-width: 100%;
+  margin: 0.8em auto;
+  text-align: center;
+}
+figure img {
+  display: block;
+  max-width: 100%;
+  width: auto !important;
+  height: auto !important;
+}
+img {
+  max-width: 100%;
+  width: auto;
+  height: auto;
+}
+.admonition img {
+  max-width: 100%;
+  width: auto;
+  height: auto;
+}
+
+/* ── Font family: use Bitstream Charter (same as LaTeX PDF) ── */
+/* Note: 'Charter' alone resolves to DejaVu Sans via fontconfig; must use 'Bitstream Charter' */
+body {
+  font-family: 'Bitstream Charter', Georgia, serif;
+}
+
+/* ── Tables: reduce font size by 2 units, prevent overflow ── */
+table {
+  font-size: 0.7em; /* ~70% of base size (similar to scriptsize in LaTeX) */
+  max-width: 100% !important;
+  width: auto !important;
+  table-layout: auto;
+  margin: 1em 0;
+  border-collapse: collapse;
+}
+
+/* Ensure table cells wrap text */
+table td, table th {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  max-width: 100%;
+}
+
+/* ── Checkboxes: use Unicode symbols like LaTeX PDF ── */
+input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  width: 1em;
+  height: 1em;
+  border: none;
+  background: none;
+  margin: 0 0.3em 0 0;
+  padding: 0;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* Empty checkbox: □ (U+25A1) */
+input[type="checkbox"]:not(:checked)::before {
+  content: '☐';
+  font-size: 1.2em;
+  line-height: 1;
+  display: inline-block;
+}
+
+/* Checked checkbox: ☒ (U+2612) */
+input[type="checkbox"]:checked::before {
+  content: '☒';
+  font-size: 1.2em;
+  line-height: 1;
+  display: inline-block;
+}
+
+/* Quiz checkboxes with data-correct attribute */
+input.quiz-input[data-correct]::before {
+  content: '☒';
+}
