@@ -130,6 +130,56 @@ book.epub         │
 
 ---
 
+## Capturing Web Content as HTML Input
+
+Folio DocForge accepts folders of HTML files as input. The easiest way to capture an online course, documentation site, or any multi-page resource is to save it locally first.
+
+### Recommended: Save Page WE (Chrome / Edge)
+
+[**Save Page WE**](https://chrome.google.com/webstore/detail/save-page-we/dhhpefjklgkmgeafimnjhojgjamoafof) is a browser extension that saves a complete web page — including all CSS, images, and embedded fonts — as a single self-contained `.html` file.
+
+**Why it works well with Folio DocForge:**
+
+- Saves each page as a standalone `.html` file with no external dependencies
+- Preserves images inline (base64) or as separate files, both of which `_mdfromhtml` handles correctly
+- Works on course platforms, documentation portals, intranets, and any page requiring authentication (you are already logged in when you save)
+
+**Workflow:**
+
+```
+1. Install "Save Page WE" from the Chrome Web Store
+2. Navigate to each lesson / chapter page in your browser
+3. Click the extension icon → Save (choose "Complete" or "HTML Only")
+4. Repeat for each page, saving all files into one folder:
+
+   my-course/
+   ├── 01_introduction.html
+   ├── 02_getting_started.html
+   ├── 03_advanced_topics.html
+   └── images/        ← (if the extension saves images separately)
+
+5. Open Folio DocForge → select "HTML folder" → point to my-course/
+6. Run the conversion → get HTML, EPUB, and PDF
+```
+
+**Tips:**
+
+- Name files with a numeric prefix (`01_`, `02_`, …) so chapters appear in the correct order
+- If the course has a sidebar or navigation you want to exclude, the `_mdfromhtml` converter strips `<nav>`, `<header>`, `<footer>`, and `<aside>` elements automatically
+- For courses behind a login (e.g. ELO, Moodle, proprietary LMS), Save Page WE is particularly useful because it captures the rendered page exactly as you see it
+
+### Alternative tools
+
+| Tool | Platform | Notes |
+|---|---|---|
+| **Save Page WE** | Chrome, Edge | Best all-around; single-file HTML output |
+| **SingleFile** | Chrome, Firefox, Edge | Similar to Save Page WE; also produces single-file HTML |
+| **wget --mirror** | CLI | Good for static sites without authentication |
+| **httrack** | CLI / GUI | Full site mirroring with link rewriting |
+| **Playwright / Puppeteer** | Node.js | Scriptable; useful for courses with dynamic content or pagination |
+
+---
+
 ## Quick Start
 
 ### Option A — Web UI
